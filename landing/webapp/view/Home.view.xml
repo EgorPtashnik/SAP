@@ -19,25 +19,28 @@
                         </detailBox>
                     </Avatar>
                 </HBox>
-                <Table id="homeTechList" class="sapUiTinyMarginTop"
-                    items="{store>/PersData/skills}">
-                    <columns>
-                        <Column id="columnName">
-                            <Text id="columnNameText" text="{i18n>skillName}"/>
-                        </Column>
-                        <Column id="columnLevel">
-                            <Text id="columnLevelText" text="{i18n>skillLevel}"/>
-                        </Column>
-                    </columns>
-                    <items>
-                        <ColumnListItem id="skillItem">
-                            <cells>
-                                <ObjectIdentifier id="skillNameColumn" title="{store>name}"/>
-                                <Text id="skillLevelColumn" text="{store>level}"/>
-                            </cells>
-                        </ColumnListItem>
-                    </items>
-                </Table>
+                <Panel id="homeSkillsTablePanel" class="sapUiTinyMarginTop" headerText="{i18n>techSkills}" expandable="true" expanded="true">
+                    <Table id="homeTechList"
+                        items="{store>/PersData/skills}">
+                        <columns>
+                            <Column id="columnName">
+                                <Text id="columnNameText" text="{i18n>skillName}"/>
+                            </Column>
+                            <Column id="columnLevel">
+                                <Text id="columnLevelText" text="{i18n>skillLevel}"/>
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem id="skillItem">
+                                <cells>
+                                    <ObjectIdentifier id="skillNameColumn" title="{store>name}"
+                                        titleActive="true" titlePress="onSkillNamePress" text="{store>description}"/>
+                                    <Text id="skillLevelColumn" text="{store>level}"/>
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </Panel>
             </VBox>
         </content>
     </Page>

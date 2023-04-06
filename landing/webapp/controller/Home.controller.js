@@ -8,8 +8,9 @@ sap.ui.define([
         "use strict";
 
         return Controller.extend("yp.landing.controller.Home", {
-            onInit: function () {
-
+            onSkillNamePress(oEvent) {
+                const link = oEvent.getSource().getBindingContext("store").getObject().link;
+                sap.m.URLHelper.redirect(link, true);
             }
         });
     });
