@@ -3,21 +3,41 @@
     xmlns="sap.m">
     <Page id="page" title="{i18n>title}">
         <content>
-            <VBox id="homeHBox" class="sapUiResponsiveMargin">
-                <Avatar id="homeAvatar"
-                    src="img/avatar.png"
-                    displaySize="XL">
-                    <detailBox>
-                        <LightBox id="homeAvatarBig">
-                            <LightBoxItem id="homeAvatarBigItem"
-                                imageSrc="img/avatar.png"
-                                title="{i18n>avatarTitle}"
-                                subtitle="{i18n>avatarDescription}">
-                            </LightBoxItem>
-                        </LightBox>
-                    </detailBox>
-                </Avatar>
-                <Text id="homeDescription" text="{i18n>description}"/>
+            <VBox id="homeVBoxMain" class="sapUiResponsiveMargin">
+                <HBox id="homeHBoxAcatar">
+                    <Avatar id="homeAvatar"
+                        src="img/avatar.png"
+                        displaySize="XL">
+                        <detailBox>
+                            <LightBox id="homeAvatarBig">
+                                <LightBoxItem id="homeAvatarBigItem"
+                                    imageSrc="img/avatar.png"
+                                    title="{i18n>avatarTitle}"
+                                    subtitle="{i18n>avatarDescription}">
+                                </LightBoxItem>
+                            </LightBox>
+                        </detailBox>
+                    </Avatar>
+                </HBox>
+                <Table id="homeTechList" class="sapUiTinyMarginTop"
+                    items="{store>/PersData/skills}">
+                    <columns>
+                        <Column id="columnName">
+                            <Text id="columnNameText" text="{i18n>skillName}"/>
+                        </Column>
+                        <Column id="columnLevel">
+                            <Text id="columnLevelText" text="{i18n>skillLevel}"/>
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem id="skillItem">
+                            <cells>
+                                <ObjectIdentifier id="skillNameColumn" title="{store>name}"/>
+                                <Text id="skillLevelColumn" text="{store>level}"/>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
             </VBox>
         </content>
     </Page>

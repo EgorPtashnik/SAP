@@ -1,7 +1,9 @@
 sap.ui.define([
     "sap/ui/model/json/JSONModel",
-    "sap/ui/Device"
-], 
+    "sap/ui/Device",
+    "./stores/AppStore",
+    "./stores/PersDataStore"
+],
     /**
      * provide app-view type models (as in the first "V" in MVVC)
      * 
@@ -10,7 +12,7 @@ sap.ui.define([
      * 
      * @returns {Function} createDeviceModel() for providing runtime info for the device the UI5 app is running on
      */
-    function (JSONModel, Device) {
+    function (JSONModel, Device, AppStore, PersDataStore) {
         "use strict";
 
         return {
@@ -18,6 +20,13 @@ sap.ui.define([
                 var oModel = new JSONModel(Device);
                 oModel.setDefaultBindingMode("OneWay");
                 return oModel;
-        }
-    };
-});
+            },
+            createStore() {
+                const oModel = new JSONModel({
+                    App: AppStore,
+                    PersData: PersDataStore
+                });
+                return oModel;
+            }
+        };
+    });
