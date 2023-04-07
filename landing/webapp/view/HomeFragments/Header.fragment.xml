@@ -1,0 +1,22 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+    <HBox id="homeHBoxAvatar" visible="{device>/system/desktop}">
+        <Avatar id="homeAvatar"
+            src="../img/avatar.png"
+            displaySize="XL">
+            <detailBox>
+                <LightBox id="homeAvatarBig">
+                    <LightBoxItem id="homeAvatarBigItem"
+                        imageSrc="../img/avatar.png"
+                        title="{i18n>avatarTitle}"
+                        subtitle="{i18n>avatarDescription}">
+                    </LightBoxItem>
+                </LightBox>
+            </detailBox>
+        </Avatar>
+        <VBox id="overviewBox" class="sapUiTinyMarginBegin">
+            <Title id="overviewTitle" text="{i18n>overview}"/>
+            <Text id="overviewText" text="{i18n>overviewDescription}"/>
+            <Text id="overviewText2" text="{i18n>overviewDescription2}"/>
+        </VBox>
+    </HBox>
+</core:FragmentDefinition>

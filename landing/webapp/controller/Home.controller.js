@@ -11,6 +11,7 @@ sap.ui.define([
         return Controller.extend("yp.landing.controller.Home", {
 
             onInit() {
+                console.log(this.getOwnerComponent().getModel("device").getData());
                 this.dispatch(Actions.TOGGLE_BUSY);
             },
 

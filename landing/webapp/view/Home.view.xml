@@ -1,6 +1,6 @@
 <mvc:View controllerName="yp.landing.controller.Home"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m">
+    xmlns="sap.m" xmlns:core="sap.ui.core">
     <Page id="page" title="{i18n>title}">
         <headerContent>
             <ToolbarSeparator id="pageToolarSeparator"/>
@@ -8,48 +8,9 @@
         </headerContent>
         <content>
             <VBox id="homeVBoxMain" class="sapUiResponsiveMargin">
-                <HBox id="homeHBoxAcatar">
-                    <Avatar id="homeAvatar"
-                        src="../img/avatar.png"
-                        displaySize="XL">
-                        <detailBox>
-                            <LightBox id="homeAvatarBig">
-                                <LightBoxItem id="homeAvatarBigItem"
-                                    imageSrc="../img/avatar.png"
-                                    title="{i18n>avatarTitle}"
-                                    subtitle="{i18n>avatarDescription}">
-                                </LightBoxItem>
-                            </LightBox>
-                        </detailBox>
-                    </Avatar>
-                    <VBox id="overviewBox" class="sapUiTinyMarginBegin">
-                        <Title id="overviewTitle" text="{i18n>overview}"/>
-                        <Text id="overviewText" text="{i18n>overviewDescription}"/>
-                        <Text id="overviewText2" text="{i18n>overviewDescription2}"/>
-                    </VBox>
-                </HBox>
-                <Panel id="homeSkillsTablePanel" class="sapUiTinyMarginTop" headerText="{i18n>techSkills}" expandable="true" expanded="true">
-                    <Table id="homeTechList"
-                        items="{store>/PersData/skills}">
-                        <columns>
-                            <Column id="columnName">
-                                <Text id="columnNameText" text="{i18n>skillName}"/>
-                            </Column>
-                            <Column id="columnLevel" width="20%" hAlign="Center">
-                                <Text id="columnLevelText" text="{i18n>skillLevel}"/>
-                            </Column>
-                        </columns>
-                        <items>
-                            <ColumnListItem id="skillItem">
-                                <cells>
-                                    <ObjectIdentifier id="skillNameColumn" title="{store>name}"
-                                        titleActive="true" titlePress="onSkillNamePress" text="{store>description}"/>
-                                    <Text id="skillLevelColumn" text="{store>level}"/>
-                                </cells>
-                            </ColumnListItem>
-                        </items>
-                    </Table>
-                </Panel>
+                <core:Fragment fragmentName="yp.landing.view.HomeFragments.Header"/>
+                <core:Fragment fragmentName="yp.landing.view.HomeFragments.HeaderMobile"/>
+                <core:Fragment fragmentName="yp.landing.view.HomeFragments.Skills"/>
             </VBox>
         </content>
     </Page>
