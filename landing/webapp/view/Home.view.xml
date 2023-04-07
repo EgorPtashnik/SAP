@@ -6,18 +6,23 @@
             <VBox id="homeVBoxMain" class="sapUiResponsiveMargin">
                 <HBox id="homeHBoxAcatar">
                     <Avatar id="homeAvatar"
-                        src="img/avatar.png"
+                        src="../img/avatar.png"
                         displaySize="XL">
                         <detailBox>
                             <LightBox id="homeAvatarBig">
                                 <LightBoxItem id="homeAvatarBigItem"
-                                    imageSrc="img/avatar.png"
+                                    imageSrc="../img/avatar.png"
                                     title="{i18n>avatarTitle}"
                                     subtitle="{i18n>avatarDescription}">
                                 </LightBoxItem>
                             </LightBox>
                         </detailBox>
                     </Avatar>
+                    <VBox id="overviewBox" class="sapUiTinyMarginBegin">
+                        <Title id="overviewTitle" text="{i18n>overview}"/>
+                        <Text id="overviewText" text="{i18n>overviewDescription}"/>
+                        <Text id="overviewText2" text="{i18n>overviewDescription2}"/>
+                    </VBox>
                 </HBox>
                 <Panel id="homeSkillsTablePanel" class="sapUiTinyMarginTop" headerText="{i18n>techSkills}" expandable="true" expanded="true">
                     <Table id="homeTechList"
