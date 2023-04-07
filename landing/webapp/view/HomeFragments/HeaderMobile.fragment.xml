@@ -14,9 +14,9 @@
                 </LightBox>
             </detailBox>
         </Avatar>
-        <Panel id="homeOverviewPanelM" class="sapUiTinyMarginTop" headerText="{i18n>overview}">
-            <Text id="overviewTextM" text="{i18n>overviewDescription}"/>
-            <Text id="overviewText2M" text="{i18n>overviewDescription2}"/>
-        </Panel>
     </VBox>
+    <Panel visible="{=!${device>/system/desktop}}" id="homeOverviewPanelM" class="sapUiTinyMarginTop" headerText="{i18n>overview}" expandable="true" width="100%" expanded="false">
+        <Text id="overviewTextM" text="{i18n>overviewDescription}"/>
+        <Text id="overviewText2M" text="{i18n>overviewDescription2}"/>
+    </Panel>
 </core:FragmentDefinition>

@@ -1,12 +1,12 @@
 <core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
-    <Panel id="homeSkillsTablePanel" class="sapUiTinyMarginTop" headerText="{i18n>techSkills}" expandable="{=${device>/system/desktop}}" expanded="true">
+    <Panel id="homeSkillsTablePanel" class="sapUiTinyMarginTop" headerText="{i18n>techSkills}" expandable="{=!${device>/system/desktop}}" expanded="{=${device>/system/desktop}}">
         <Table id="homeTechList"
             items="{store>/PersData/skills}">
             <columns>
                 <Column id="columnName">
                     <Text id="columnNameText" text="{i18n>skillName}"/>
                 </Column>
-                <Column id="columnLevel" width="20%" hAlign="Center">
+                <Column id="columnLevel" width="{=${device>/system/desktop} ? '20%' : '100px'}" hAlign="Center">
                     <Text id="columnLevelText" text="{i18n>skillLevel}"/>
                 </Column>
             </columns>
