@@ -19,12 +19,12 @@
             <Text id="overviewText2" text="{i18n>overviewDescription2}"/>
         <HBox id="headerLinksBox" wrap="Wrap">
             <HBox id="githubBox" alignItems="Center" class="sapUiTinyMargin">
-                <Image id="githubLogo" src="../img/githublogo.png" width="20px" height="20px"/>
                 <Link id="linkGitHub" class="sapUiTinyMarginBegin" text="GitHub" href="https://github.com/EgorPtashnik" target="_blank"/>
+                <Image id="githubLogo" src="../img/githublogo.png" width="20px" height="20px"/>
             </HBox>
             <HBox id="linkedBox" alignItems="Center" class="sapUiTinyMargin">
-                <Image id="linkedLogo" src="../img/linkedlogo.png" width="20px" height="20px"/>
                 <Link id="linkLinked" class="sapUiTinyMarginBegin" text="LinkedIn" href="https://www.linkedin.com/in/egor-ptashnik-1281631b9/" target="_blank"/>
+                <Image id="linkedLogo" src="../img/linkedlogo.png" width="20px" height="20px"/>
             </HBox>
         </HBox>
         </VBox>
