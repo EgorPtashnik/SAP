@@ -18,5 +18,15 @@
     <Panel visible="{=!${device>/system/desktop}}" id="homeOverviewPanelM" class="sapUiTinyMarginTop" headerText="{i18n>overview}" expandable="true" width="100%" expanded="false">
         <Text id="overviewTextM" text="{i18n>overviewDescription}"/>
         <Text id="overviewText2M" text="{i18n>overviewDescription2}"/>
+        <HBox id="headerLinksBoxM" wrap="Wrap">
+            <HBox id="githubBoxM" alignItems="Center" class="sapUiTinyMargin">
+                <Link id="linkGitHubM" text="GitHub" href="https://github.com/EgorPtashnik" target="_blank"/>
+                <Image id="githubLogoM" class="sapUiTinyMarginBegin" src="../img/githublogo.png" width="20px" height="20px"/>
+            </HBox>
+            <HBox id="linkedBoxM" alignItems="Center" class="sapUiTinyMargin">
+                <Link id="linkLinkedM" text="LinkedIn" href="https://www.linkedin.com/in/egor-ptashnik-1281631b9/" target="_blank"/>
+                <Image id="linkedLogoM" class="sapUiTinyMarginBegin" src="../img/linkedlogo.png" width="20px" height="20px"/>
+            </HBox>
+        </HBox>
     </Panel>
 </core:FragmentDefinition>
