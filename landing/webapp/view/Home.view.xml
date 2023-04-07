@@ -35,7 +35,7 @@
                             <Column id="columnName">
                                 <Text id="columnNameText" text="{i18n>skillName}"/>
                             </Column>
-                            <Column id="columnLevel">
+                            <Column id="columnLevel" width="20%" hAlign="Center">
                                 <Text id="columnLevelText" text="{i18n>skillLevel}"/>
                             </Column>
                         </columns>
