@@ -16,6 +16,7 @@ sap.ui.define(
           const store = this.getStore();
           switch(action) {
             case Actions.TOGGLE_BUSY: Reducers.toggleBusy(store); break;
+            case Actions.TOGGLE_DARK_MODE: Reducers.toggleDarkMode(store); break;
           }
         }
       });

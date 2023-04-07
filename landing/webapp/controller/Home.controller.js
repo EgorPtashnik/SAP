@@ -18,6 +18,16 @@ sap.ui.define([
                 this.dispatch(Actions.TOGGLE_BUSY);
             },
 
+            toggleTheme() {
+                this.dispatch(Actions.TOGGLE_DARK_MODE);
+                const isDarkMode = this.getStore().getProperty("/App/DarkMode");
+                if (isDarkMode) {
+                    sap.ui.getCore().applyTheme("sap_horizon_dark");
+                } else {
+                    sap.ui.getCore().applyTheme("sap_horizon");
+                }
+            },
+
             onSkillNamePress(event) {
                 const link = event.getSource().getBindingContext("store").getObject().link;
                 sap.m.URLHelper.redirect(link, true);

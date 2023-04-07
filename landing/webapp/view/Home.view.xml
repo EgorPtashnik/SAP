@@ -2,6 +2,10 @@
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
     xmlns="sap.m">
     <Page id="page" title="{i18n>title}">
+        <headerContent>
+            <ToolbarSeparator id="pageToolarSeparator"/>
+            <Switch id="pageSwitchTheme" customTextOff=" " customTextOn=" " change="toggleTheme"/>
+        </headerContent>
         <content>
             <VBox id="homeVBoxMain" class="sapUiResponsiveMargin">
                 <HBox id="homeHBoxAcatar">
