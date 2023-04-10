@@ -6,6 +6,7 @@ const createTodoItemTable = (db) => {
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         todo_title text,
         todo_description text,
+        todo_order INTEGER
         card_id INTEGER
     )`,
     (err) => {
@@ -18,7 +19,8 @@ const createTodoItemTable = (db) => {
 const createTodoListTable = (db) => {
     db.run(`CREATE TABLE TODOLIST (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        card_title text
+        card_title text,
+        card_order INTEGER
     )`,
     (err) => {
         if (err) {
