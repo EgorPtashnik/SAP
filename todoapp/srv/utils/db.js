@@ -6,8 +6,13 @@ const createTodoItemTable = (db) => {
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         todo_title text,
         todo_description text,
-        todo_order INTEGER
-        card_id INTEGER
+        todo_order INTEGER,
+        card_id INTEGER,
+
+        CONSTRAINT fk_todolist
+          FOREIGN KEY (card_id)
+          REFERENCES TODOLIST(id)
+          ON DELETE CASCADE
     )`,
     (err) => {
         if (err) {

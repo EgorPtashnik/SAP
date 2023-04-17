@@ -1,6 +1,6 @@
 const express = require("express");
+const cors = require("cors");
 const server = express();
-const cors = require('cors');
 const port = 4002 || process.eng.PORT;
 
 const todos = require("./routes/todosRoute");
