@@ -15,6 +15,7 @@ sap.ui.define(
         dispatch(action, data) {
           const store = this.getStore();
           switch(action) {
+            case Actions.FETCH_DATA: Reducers.fetchData(store); break;
           }
         }
       });

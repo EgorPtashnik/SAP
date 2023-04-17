@@ -1,9 +1,10 @@
 <mvc:View controllerName="yp.ptashnik.todoapp.controller.Home"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m">
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
     <Page id="page" title="{i18n>title}">
         <content>
-            
+            <core:Fragment fragmentName="yp.ptashnik.todoapp.view.HomeFragments.ListContainer"/>
         </content>
     </Page>
 </mvc:View>
