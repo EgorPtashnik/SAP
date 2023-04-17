@@ -9,8 +9,18 @@ sap.ui.define([
         "use strict";
 
         return Controller.extend("yp.ptashnik.todoapp.controller.Home", {
-            onInit: function () {
+            onInit() {
                 this.dispatch(Actions.FETCH_DATA);
+            },
+
+            handleCreateNewList() {
+              this.dispatch(Actions.TOGGLE_CREATE_CARD);
+              this.loadFragment({
+                name: "yp.ptashnik.todoapp.view.HomeFragments.CreateList"
+              }).then( (createListFragment) => {
+                const listContainer = this.byId("ToDoListContainer");
+                listContainer.addItem(createListFragment)
+              });
             }
         });
     });

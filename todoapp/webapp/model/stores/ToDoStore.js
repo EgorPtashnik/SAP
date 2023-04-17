@@ -1,6 +1,7 @@
 sap.ui.define([], () => {
     return {
         isFetching: false,
-        todoLists: []
+        todoLists: [],
+        isCreateCardVisible: false
     }
 });
