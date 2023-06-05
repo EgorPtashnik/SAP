@@ -10,7 +10,7 @@
             </f:SimpleForm>
         </content>
         <buttons>
-            <Button text="Create" type="Emphasized"/>
+            <Button text="Create" type="Emphasized" press="onSubmitNewList"/>
             <Button text="Cancel" type="Reject" press="onDialogClose"/>
         </buttons>
     </Dialog>

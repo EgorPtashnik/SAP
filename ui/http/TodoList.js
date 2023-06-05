@@ -13,6 +13,16 @@ sap.ui.define([
 
         get(id) {
             return this._fetchJSON(BASE_URL, {id: id});
+        },
+
+        create(newList) {
+            return this._fetchJSON(BASE_URL, {
+                body: JSON.stringify(newList),
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
         }
     }
 

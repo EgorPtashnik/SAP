@@ -20,17 +20,22 @@ sap.ui.define([
             this.Http.TodoList.get().then(res => this.getViewModel().setProperty("/lists", res.data));
         },
 
-        onCreate() {
+        onOpenCreateDialog() {
             this._resetCreateData();
             this._openCreateDialog();
+        },
+
+        onSubmitNewList(event) {
+            const newList = this.getViewModel().getProperty("/create");
+            this.Http.TodoList.create(newList).then(res => console.log(res)  );
+
+            this.onDialogClose(event);
         },
 
         /*-------------------PRIVATE SECTION-------------------*/
         _resetCreateData() {
             this.getViewModel().setProperty("/create", {
-                name: "",
-                status: 0,
-                category: 0
+                name: ""
             });
         },
 

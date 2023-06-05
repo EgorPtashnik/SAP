@@ -10,7 +10,7 @@ const sqlTodoList = `
             TEXT,
 
         status
-            INTEGER
+            INTEGER,
 
         created_at
             TEXT,

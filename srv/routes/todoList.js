@@ -11,4 +11,9 @@ TodoListRouter.get("/", (req, res) => {
     TodoListService.getTodoLists(req, res);
 });
 
+TodoListRouter.post("/", (req, res) => {
+    console.log(req.body);
+    TodoListService.createTodoList(req, res);
+})
+
 module.exports = TodoListRouter;
