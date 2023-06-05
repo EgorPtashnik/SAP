@@ -1,0 +1,23 @@
+{
+    "welcomeFile": "index.html#/",
+    "authenticationMethod": "route",
+    "sessionTimeout": 30,
+    "routes": [
+      {
+        "source": "^/api/(.*)$",
+        "target": "$1",
+        "destination": "srv"
+      },
+      {
+        "source": "^/(.*)$",
+        "target": "$1",
+        "localDir": "ui",
+        "cacheControl": "no-cache"
+      }
+    ],
+    "logout": {
+      "logoutEndpoint": "/logout",
+      "logoutPage": "index.html#/"
+    }
+  }
+  

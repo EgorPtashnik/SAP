@@ -1,0 +1,31 @@
+{
+  "_version": "1.0.0",
+  "sap.app": {
+    "id": "yp",
+    "type": "application"
+  },
+  "sap.ui5": {
+    "rootView": {
+      "viewName": "yp.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "app"
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "controlId": "app",
+        "controlAggregation": "pages",
+        "viewPath": "yp.view",
+        "async": true
+      },
+      "routes": [{
+        "pattern": "",
+        "name": "info",
+        "viewType": "XML",
+        "view": "Info"
+      }]
+    }
+  }
+}
