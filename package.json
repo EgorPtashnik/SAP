@@ -2,16 +2,6 @@
     "name": "egorptashnik",
     "version": "1.0.0",
     "private": true,
-    "scripts": {
-        "plan-ui": "node node_modules/@sap/approuter/approuter.js",
-        "karma": "karma start",
-        "karma-ci": "rimraf coverage && karma start karma-ci.conf.js",
-        "test": "npm run lint && npm run karma-ci"
-    },
-    "dependencies": {
-        "@sap/approuter": "^14.1.1"
-    },
-    "engines": {
-        "node": "^18.15.0"
-    }
+    "scripts": {},
+    "dependencies": {}
 }
