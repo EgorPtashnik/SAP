@@ -1,6 +1,9 @@
 sap.ui.define([
-    "sap/ui/core/UIComponent"
-], function (UIComponent) {
+    "sap/ui/core/UIComponent",
+    "sap/ui/model/json/JSONModel",
+
+    "yp/model/Config"
+], function (UIComponent, JSONModel, Config) {
     "use strict";
 
     return UIComponent.extend("yp.Component", {
@@ -10,6 +13,8 @@ sap.ui.define([
 
         init() {
             UIComponent.prototype.init.apply(this, arguments);
+
+            this.setModel(new JSONModel(Config), "config")
 
             this.getRouter().initialize();
         },

@@ -4,5 +4,9 @@ sap.ui.define([
 
     return Controller.extend("yp.controller.BaseController", {
 
+        getConfig() {
+            this.getOwnerComponent().getModel("config");
+        }
+
     });
 });

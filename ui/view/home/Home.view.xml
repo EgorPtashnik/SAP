@@ -1,9 +1,21 @@
 <mvc:View
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.f"
     displayBlock="true"
     controllerName="yp.controller.home.Home">
     
-    <Page/>
+    <DynamicPage>
+        <title>
+            <core:Fragment type="XML" fragmentName="yp.view.home.Title"/>
+        </title>
+
+        <header>
+        </header>
+
+        <content>
+            <core:Fragment type="XML" fragmentName="yp.view.home.Content"/>
+        </content>
+    </DynamicPage>
 
 </mvc:View>
