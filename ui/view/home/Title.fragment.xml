@@ -7,6 +7,8 @@
             <m:Title text="Todo List"/>
         </heading>
         <actions>
+            <m:Button text="Create" press="onCreate"/>
+            <m:Button text="Go" type="Emphasized"/>
         </actions>
     </DynamicPageTitle>
 </core:FragmentDefinition>

@@ -1,6 +1,27 @@
 <core:FragmentDefinition
     xmlns:core="sap.ui.core"
     xmlns="sap.m">
-    <Table>
+    <Table items="{/lists}"
+           noData="No Todo Lists">
+        <columns>
+            <Column>
+                <Text text="Name"/>
+            </Column>
+            <Column>
+                <Text text="Status"/>
+            </Column>
+            <Column>
+                <Text text="Category"/>
+            </Column>
+        </columns>
+        <items>
+            <ColumnListItem>
+                <cells>
+                    <ObjectIdentifier title="{name}" text="{id}"/>
+                    <Text text="{status}"/>
+                    <Text text="{category}"/>
+                </cells>
+            </ColumnListItem>
+        </items>
     </Table>
 </core:FragmentDefinition>

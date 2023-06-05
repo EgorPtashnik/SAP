@@ -1,0 +1,17 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+	xmlns:f="sap.ui.layout.form">
+    <Dialog title="Create List">
+        <content>
+            <f:SimpleForm>
+                <Label text="Name"/>
+                <Input value="{/create/name}"/>
+            </f:SimpleForm>
+        </content>
+        <buttons>
+            <Button text="Create" type="Emphasized"/>
+            <Button text="Cancel" type="Reject" press="onDialogClose"/>
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

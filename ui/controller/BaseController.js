@@ -9,7 +9,7 @@ sap.ui.define([
         Http: Http,
 
         getConfig() {
-            this.getOwnerComponent().getModel("config");
+            return this.getOwnerComponent().getModel("config");
         },
 
         getRouter() {
@@ -18,6 +18,10 @@ sap.ui.define([
 
         getViewModel() {
             return this.getView().getModel();
+        },
+
+        onDialogClose(event) {
+            event.getSource().getParent().close();
         }
 
     });
