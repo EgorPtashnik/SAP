@@ -44,7 +44,7 @@ const TodoListService = {
             now,
             0
         ];
-        db.run(sql, params, err => {
+        db.run(sql, params, function(err) {
             if (err) {
                 res.status(400).json({
                     error: err.message
@@ -54,6 +54,7 @@ const TodoListService = {
             res.json({
                 message: "success",
                 list: {
+                    id: this.lastID,
                     name: req.body.name,
                     status: 0,
                     created_at: now,

@@ -8,12 +8,14 @@ sap.ui.define([
             this.getRouter().attachRouteMatched(this._onRouteMatch, this);
             this.getView().setModel(new JSONModel({
                 lists: [],
+                deleteMode: false,
                 create: {
                     name: ""
                 }
             }));
 
             this.CreateDialog = null;
+            this.DeleteConfirmationDialog = null;
         },
 
         _onRouteMatch() {
@@ -27,7 +29,11 @@ sap.ui.define([
 
         onSubmitNewList(event) {
             const newList = this.getViewModel().getProperty("/create");
-            this.Http.TodoList.create(newList).then(res => console.log(res)  );
+            this.Http.TodoList.create(newList).then(res => {
+                if (res.message === "success") {
+                    this.getViewModel().setProperty("/lists", [...this.getViewModel().getProperty("/lists"), res.list]);
+                }
+            });
 
             this.onDialogClose(event);
         },
