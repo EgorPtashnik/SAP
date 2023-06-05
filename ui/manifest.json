@@ -22,9 +22,9 @@
       },
       "routes": [{
         "pattern": "",
-        "name": "info",
+        "name": "home",
         "viewType": "XML",
-        "view": "Info"
+        "view": "home.Home"
       }]
     }
   }

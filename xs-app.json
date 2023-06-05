@@ -1,5 +1,5 @@
 {
-    "welcomeFile": "index.html#/",
+    "welcomeFile": "index.html",
     "authenticationMethod": "route",
     "sessionTimeout": 30,
     "routes": [
@@ -12,6 +12,7 @@
         "source": "^/(.*)$",
         "target": "$1",
         "localDir": "ui",
+        "authenticationType": "none",
         "cacheControl": "no-cache"
       }
     ],
