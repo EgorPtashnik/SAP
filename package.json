@@ -2,9 +2,15 @@
     "name": "egorptashnik",
     "version": "1.0.0",
     "private": true,
-    "scripts": {},
+    "scripts": {
+        "start-ui": "node node_modules/@sap/approuter/approuter.js",
+        "start-srv": "nodemon srv/server.js",
+        "setup-db": "node db/db.js"
+    },
     "dependencies": {
         "@sap/approuter": "^14.1.1",
-        "sqlite3": "^5.1.6"
+        "express": "^4.18.2",
+        "sqlite3": "^5.1.6",
+        "nodemon": "^2.0.22"
     }
 }

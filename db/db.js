@@ -1,7 +1,7 @@
 const sqlite3 = require("sqlite3");
-const filepath = "./database.sqlite";
+const filepath = "./db/database.sqlite";
 
-const Tables = require("./tables");
+const tables = require("./tables");
 
 const db = new sqlite3.Database(filepath, err => {
     if (err) {
@@ -9,9 +9,8 @@ const db = new sqlite3.Database(filepath, err => {
         throw err;
     } else {
         console.info(`Connected to ${filepath}`);
-        Tables.initialize(db);
+        tables.initialize(db);
     }
-})
+});
 
-Tables.initialize(db);
-
+module.exports = db;
