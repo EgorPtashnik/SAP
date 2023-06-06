@@ -2,7 +2,7 @@ sap.ui.define([
     "yp/http/Base"
 ], function(Base) {
     "use strict";
-    const BASE_URL="/api/todoLists"
+    const BASE_URL="/api/todoLists/";
 
     return {
         ...Base,
@@ -23,6 +23,22 @@ sap.ui.define([
                     "Content-Type": "application/json"
                 }
             })
+        },
+
+        update(newList) {
+            return this._fetchJSON(BASE_URL + `/${newList.id}`, {
+                body: JSON.stringify(newList),
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+        },
+
+        delete(listId) {
+            return this._fetchJSON(BASE_URL + `/${listId}`, {
+                method: "DELETE"
+            });
         }
     }
 

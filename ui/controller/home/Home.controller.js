@@ -9,6 +9,7 @@ sap.ui.define([
             this.getView().setModel(new JSONModel({
                 lists: [],
                 deleteMode: false,
+                deleteId: "",
                 create: {
                     name: ""
                 }
@@ -27,14 +28,33 @@ sap.ui.define([
             this._openCreateDialog();
         },
 
+        onOpenDeleteConfirmationDialog(event) {
+            const path = event.getParameter("listItem").getBindingContext().getPath();
+            this.getViewModel().setProperty("/deleteId", this.getViewModel().getProperty(path + "/id"));
+            this._openDeleteConfirmationDialog();
+        },
+
         onSubmitNewList(event) {
+            this._toggleBusy();
             const newList = this.getViewModel().getProperty("/create");
             this.Http.TodoList.create(newList).then(res => {
-                if (res.message === "success") {
+                if (!res.error && res.message === "success") {
                     this.getViewModel().setProperty("/lists", [...this.getViewModel().getProperty("/lists"), res.list]);
+                    this._toggleBusy();
                 }
             });
+            this.onDialogClose(event);
+        },
 
+        onConfirmDeleteList(event) {
+            this._toggleBusy();
+            const deleteId = this.getViewModel().getProperty("/deleteId");
+            this.Http.TodoList.delete(deleteId).then(res => {
+                if (!res.error && res.message === "success") {
+                    this.getViewModel().setProperty("/lists", [...this.getViewModel().getProperty("/lists").filter(list => list.id !== deleteId)]);
+                    this._toggleBusy();
+                }
+            });
             this.onDialogClose(event);
         },
 

@@ -4,7 +4,9 @@
     <Table items="{/lists}"
            noDataText="No Todo Lists"
            mode="{=${/deleteMode} ? 'Delete' : 'SingleSelectMaster'}"
-           delete="onOpenDeleteConfirmationDialog">
+           delete="onOpenDeleteConfirmationDialog"
+           busy="{config>/busy}"
+           busyIndicatorDelay="1">
         <columns>
             <Column>
                 <Text text="Name"/>
@@ -19,7 +21,7 @@
         <items>
             <ColumnListItem>
                 <cells>
-                    <ObjectIdentifier title="{name}" text="ID: {id}"/>
+                    <ObjectIdentifier title="{name}" text="Items: {ItemsCount}"/>
                     <Text text="{path: 'category_id', formatter: '.Formatter.getCategoryText'}"/>
                     <MessageStrip text="{path: 'status', formatter: '.Formatter.getListStatusText'}"
                                   type="{path: 'status', formatter: '.Formatter.getListStatusType'}"/>

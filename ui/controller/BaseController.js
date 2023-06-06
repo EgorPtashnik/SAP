@@ -22,7 +22,13 @@ sap.ui.define([
             return this.getView().getModel();
         },
 
-        onOpenDeleteConfirmationDialog() {
+        onDialogClose(event) {
+            event.getSource().getParent().close();
+        },
+
+        /*-------------------PRIVATE SECTION------------------*/
+        
+        _openDeleteConfirmationDialog() {
             if (!this.DeleteConfirmationDialog) {
                 this.loadFragment({name: "yp.view.common.DeleteConfirmationDialog"}).then(fragment => {
                     this.DeleteConfirmationDialog = fragment;
@@ -33,8 +39,8 @@ sap.ui.define([
             }
         },
 
-        onDialogClose(event) {
-            event.getSource().getParent().close();
+        _toggleBusy() {
+            this.getConfig().setProperty("/busy", !this.getConfig().getProperty("/busy"));
         }
 
     });
