@@ -18,10 +18,6 @@ sap.ui.define([
             return UIComponent.getRouterFor(this);
         },
 
-        getViewModel() {
-            return this.getView().getModel();
-        },
-
         onDialogClose(event) {
             event.getSource().getParent().close();
         },

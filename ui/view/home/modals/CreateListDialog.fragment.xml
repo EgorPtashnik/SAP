@@ -6,9 +6,9 @@
         <content>
             <f:SimpleForm editable="true">
                 <Label text="Name"/>
-                <Input value="{/create/name}"/>
+                <Input value="{/create/list/name}"/>
                 <Label text="Category"/>
-                <Select items="{config>/TodoListCategories}" selectedKey="{/create/category_id}" forceSelection="true">
+                <Select items="{config>/TodoListCategories}" selectedKey="{/create/list/category_id}" forceSelection="true">
                     <core:Item key="{config>id}" text="{config>category}"/>
                 </Select>
             </f:SimpleForm>

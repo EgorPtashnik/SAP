@@ -3,7 +3,7 @@
     xmlns="sap.m">
     <Table items="{/lists}"
            noDataText="No Todo Lists"
-           mode="{=${/deleteMode} ? 'Delete' : 'SingleSelectMaster'}"
+           mode="{=${/editMode} ? 'Delete' : 'SingleSelectMaster'}"
            delete="onOpenDeleteConfirmationDialog"
            busy="{config>/busy}"
            busyIndicatorDelay="1">
@@ -21,10 +21,18 @@
         <items>
             <ColumnListItem>
                 <cells>
-                    <ObjectIdentifier title="{name}" text="Items: {ItemsCount}"/>
-                    <Text text="{path: 'category_id', formatter: '.Formatter.getCategoryText'}"/>
-                    <ObjectStatus text="{path: 'status', formatter: '.Formatter.getListStatusText'}"
-                                  inverted="true"
+                    <VBox>
+                        <ObjectIdentifier title="{name}" text="Items: {ItemsCount}" visible="{=!${/editMode}}"/>
+                        <Input value="{name}" visible="{/editMode}"/>
+                    </VBox>
+                    <VBox>
+                        <Text text="{path: 'category_id', formatter: '.Formatter.getCategoryText'}" visible="{=!${/editMode}}"/>
+                        <Select items="{path: 'config>/TodoListCategories', templateShareable: true}" selectedKey="{category_id}" visible="{/editMode}">
+                            <core:Item key="{config>id}" text="{config>category}"/>
+                        </Select>
+                    </VBox>
+                    <ObjectStatus inverted="true"
+                                  text="{path: 'status', formatter: '.Formatter.getListStatusText'}"
                                   state="{path: 'status', formatter: '.Formatter.getListStatusType'}"
                                   icon="{path: 'status', formatter: '.Formatter.getListStatusIcon'}"/>
                 </cells>

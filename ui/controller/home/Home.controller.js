@@ -1,46 +1,60 @@
 sap.ui.define([
     "yp/controller/BaseController",
-    "sap/ui/model/json/JSONModel"
-], function(BaseController, JSONModel) {
+    "sap/ui/model/json/JSONModel",
+    "sap/m/MessageBox"
+], function(BaseController, JSONModel, MessageBox) {
 
     return BaseController.extend("yp.controller.home.Home", {
         onInit() {
             this.getRouter().attachRouteMatched(this._onRouteMatch, this);
-            this.getView().setModel(new JSONModel({
+            this.model = new JSONModel({
                 lists: [],
-                deleteMode: false,
+                editMode: false,
                 deleteId: "",
                 create: {
-                    name: "",
-                    category_id: ""
-                }
-            }));
+                    list: {
+                        name: "",
+                        category_id: ""
+                    },
+                    categoey: {
+                        name: ""
+                    }
+                },
+                backup: []
+            });
+            this.getView().setModel(this.model);
 
-            this.CreateDialog = null;
+            this.CreateListDialog = null;
+            this.CreateCategoryDialog = null;
             this.DeleteConfirmationDialog = null;
         },
 
         _onRouteMatch() {
-            this.Http.TodoList.get().then(res => this.getViewModel().setProperty("/lists", res.data));
+            this.Http.TodoList.get().then(res => this.model.setProperty("/lists", res.data));
         },
 
-        onOpenCreateDialog() {
-            this._resetCreateData();
-            this._openCreateDialog();
+        onOpenCreateListDialog() {
+            this._resetCreateListData();
+            this._openCreateListDialog();
+        },
+
+        onOpenCreateCategoryDialog() {
+            this._resetCreateCategoryData();
+            this._openCreateCategoryDialog();
         },
 
         onOpenDeleteConfirmationDialog(event) {
             const path = event.getParameter("listItem").getBindingContext().getPath();
-            this.getViewModel().setProperty("/deleteId", this.getViewModel().getProperty(path + "/id"));
+            this.model.setProperty("/deleteId", this.model.getProperty(path + "/id"));
             this._openDeleteConfirmationDialog();
         },
 
         onSubmitNewList(event) {
             this._toggleBusy();
-            const newList = this.getViewModel().getProperty("/create");
+            const newList = this.model.getProperty("/create");
             this.Http.TodoList.create(newList).then(res => {
                 if (!res.error && res.message === "success") {
-                    this.getViewModel().setProperty("/lists", [...this.getViewModel().getProperty("/lists"), res.list]);
+                    this.model.setProperty("/lists", [...this.model.getProperty("/lists"), res.list]);
                     this._toggleBusy();
                 }
             });
@@ -49,32 +63,80 @@ sap.ui.define([
 
         onConfirmDeleteList(event) {
             this._toggleBusy();
-            const deleteId = this.getViewModel().getProperty("/deleteId");
+            const deleteId = this.model.getProperty("/deleteId");
             this.Http.TodoList.delete(deleteId).then(res => {
                 if (!res.error && res.message === "success") {
-                    this.getViewModel().setProperty("/lists", [...this.getViewModel().getProperty("/lists").filter(list => list.id !== deleteId)]);
+                    this.model.setProperty("/lists", [...this.model.getProperty("/lists").filter(list => list.id !== deleteId)]);
                     this._toggleBusy();
                 }
             });
             this.onDialogClose(event);
         },
 
+        onEdit() {
+            this._toggleEditMode();
+            if (this.model.getProperty("/editMode"))
+                this.model.setProperty("/backup", [...this.model.getProperty("/lists")]);
+        },
+
+        onSave() {
+
+        },
+
+        onDiscard() {
+            MessageBox.confirm("All changes will be lost. Do you want to exit edit mode?", {
+                title: "Confirm",
+                actions: [MessageBox.Action.OK, MessageBox.Action.CANCEL],
+                onClose: action => {
+                    if (action === MessageBox.Action.OK) {
+                        this._discardChanges();
+                        this._toggleEditMode();
+                    }
+                }
+            })
+        },
+
         /*-------------------PRIVATE SECTION-------------------*/
-        _resetCreateData() {
-            this.getViewModel().setProperty("/create", {
+        _discardChanges() {
+            this.model.setProperty("/lists", [...this.model.getProperty("/backup")]);
+        },
+
+        _toggleEditMode() {
+            this.model.setProperty("/editMode", !this.model.getProperty("/editMode"));
+        },
+        
+        _resetCreateListData() {
+            this.model.setProperty("/create/list", {
                 name: "",
                 category_id: this.getConfig().getProperty("/TodoListCategories")[0].id
             });
         },
 
-        _openCreateDialog() {
-            if (!this.CreateDialog) {
-                this.loadFragment({name: "yp.view.home.modals.CreateDialog"}).then(fragment => {
-                    this.CreateDialog = fragment;
-                    this.CreateDialog.open();
+        _resetCreateCategoryData() {
+            this.model.setProperty("/create/category", {
+                category: "",
+            });
+        },
+
+        _openCreateListDialog() {
+            if (!this.CreateListDialog) {
+                this.loadFragment({name: "yp.view.home.modals.CreateListDialog"}).then(fragment => {
+                    this.CreateListDialog = fragment;
+                    this.CreateListDialog.open();
                 });
             } else {
-                this.CreateDialog.open();
+                this.CreateListDialog.open();
+            }
+        },
+
+        _openCreateCategoryDialog() {
+            if (!this.CreateCategoryDialog) {
+                this.loadFragment({name: "yp.view.home.modals.CreateCategoryDialog"}).then(fragment => {
+                    this.CreateCategoryDialog = fragment;
+                    this.CreateCategoryDialog.open();
+                });
+            } else {
+                this.CreateCategoryDialog.open();
             }
         }
     });

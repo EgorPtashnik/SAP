@@ -2,11 +2,11 @@ sap.ui.define([], function() {
     "use strict";
 
     const STATUS_TEXT_MAP = {
-        0: "None",
-        1: "Low",
-        2: "Medium",
-        3: "High",
-        4: "Critical"
+        0: "NONE",
+        1: "LOW",
+        2: "MEDIUM",
+        3: "HIGH",
+        4: "CRITICAL"
     };
 
     const STATUS_TYPE_MAP = {
@@ -36,7 +36,7 @@ sap.ui.define([], function() {
             return STATUS_ICON_MAP[value];
         },
         getCategoryText(value) {
-            return this.getConfig().getProperty("/TodoListCategories").find(item => item.id === value).category;
+            return this.getConfig().getProperty("/TodoListCategories").find(item => item.id === +value).category;
         }
     }
 });

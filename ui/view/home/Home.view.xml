@@ -5,17 +5,17 @@
     displayBlock="true"
     controllerName="yp.controller.home.Home">
     
-    <DynamicPage>
+    <DynamicPage showFooter="{/editMode}">
         <title>
             <core:Fragment type="XML" fragmentName="yp.view.home.Title"/>
         </title>
 
         <header>
-            <core:Fragment type="XML" fragmentName="yp.view.home.Header"/>
+            <core:Fragment type="XML" fragmentName="yp.view.home.FilterBar"/>
         </header>
 
         <content>
-            <core:Fragment type="XML" fragmentName="yp.view.home.Content"/>
+            <core:Fragment type="XML" fragmentName="yp.view.home.Table"/>
         </content>
 
         <footer>
