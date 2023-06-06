@@ -51,10 +51,22 @@ sap.ui.define([
 
         onSubmitNewList(event) {
             this._toggleBusy();
-            const newList = this.model.getProperty("/create");
+            const newList = this.model.getProperty("/create/list");
             this.Http.TodoList.create(newList).then(res => {
                 if (!res.error && res.message === "success") {
                     this.model.setProperty("/lists", [...this.model.getProperty("/lists"), res.list]);
+                    this._toggleBusy();
+                }
+            });
+            this.onDialogClose(event);
+        },
+
+        onSubmitNewCategory(event) {
+            this._toggleBusy();
+            const newCategory = this.model.getProperty("/create/category");
+            this.Http.MasterData.createTodoListCategory(newCategory).then(res => {
+                if (!res.error && res.message === "success") {
+                    this.getConfig().setProperty("/TodoListCategories", [...this.getConfig().getProperty("/TodoListCategories"), res.newCategory]);
                     this._toggleBusy();
                 }
             });

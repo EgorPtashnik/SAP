@@ -11,4 +11,8 @@ MasterDataRouter.get("/Categories", (req, res) => {
     MasterDataService.getCategories(req, res);
 });
 
+MasterDataRouter.post("/Categories", (req, res) => {
+    MasterDataService.createCategory(req, res);
+});
+
 module.exports = MasterDataRouter;

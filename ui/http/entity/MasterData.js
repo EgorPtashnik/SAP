@@ -9,6 +9,16 @@ sap.ui.define([
         
         getTodoListCategories() {
             return this._fetchJSON(BASE_URL + "/Categories");
+        },
+
+        createTodoListCategory(newCategory) {
+            return this._fetchJSON(BASE_URL + "/Categories", {
+                body: JSON.stringify(newCategory),
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            });
         }
     }
 
