@@ -1,5 +1,14 @@
 <core:FragmentDefinition
     xmlns:core="sap.ui.core"
-    xmlns="sap.l">
-    
+    xmlns="sap.m"
+    xmlns:f="sap.f">
+    <f:DynamicPageHeader>
+        <Toolbar style="Clear">
+            <HBox>
+                <SearchField/>
+            </HBox>
+            <ToolbarSpacer/>
+            <Button text="Go" type="Emphasized"/>
+        </Toolbar>
+    </f:DynamicPageHeader>
 </core:FragmentDefinition>

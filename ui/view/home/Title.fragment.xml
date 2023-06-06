@@ -9,7 +9,6 @@
         <actions>
             <m:ToggleButton enabled="{=${/lists}.length > 0}" pressed="{/deleteMode}" text="Delete Mode"/>
             <m:Button text="Create" press="onOpenCreateDialog"/>
-            <m:Button text="Go" type="Emphasized"/>
         </actions>
     </DynamicPageTitle>
 </core:FragmentDefinition>

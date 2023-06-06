@@ -11,11 +11,16 @@
         </title>
 
         <header>
+            <core:Fragment type="XML" fragmentName="yp.view.home.Header"/>
         </header>
 
         <content>
             <core:Fragment type="XML" fragmentName="yp.view.home.Content"/>
         </content>
+
+        <footer>
+            <core:Fragment type="XML" fragmentName="yp.view.home.Footer"/>
+        </footer>
     </DynamicPage>
 
 </mvc:View>

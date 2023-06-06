@@ -1,6 +1,6 @@
 sap.ui.define([
-    "yp/http/TodoList",
-    "yp/http/MasterData"
+    "yp/http/entity/TodoList",
+    "yp/http/entity/MasterData"
 ], function(TodoList, MasterData) {
     "use strict";
 
