@@ -5,7 +5,7 @@
     <f:DynamicPageHeader>
         <Toolbar style="Clear">
             <HBox>
-                <SearchField/>
+                <SearchField placeholder="search"/>
             </HBox>
             <ToolbarSpacer/>
             <Button text="Go" type="Emphasized"/>

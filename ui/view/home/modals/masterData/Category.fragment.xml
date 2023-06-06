@@ -1,0 +1,9 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form">
+    <f:SimpleForm editable="true">
+        <Label text="Category"/>
+        <Input value="{/create/category/name}" placeholder="new category name"/>
+    </f:SimpleForm>
+</core:FragmentDefinition>

@@ -12,20 +12,12 @@ sap.ui.define([
             this.getRouter().attachRouteMatched(this._onRouteMatch, this);
             this.model = new JSONModel({
                 lists: [],
-                create: {
-                    list: {
-                        name: "",
-                        category_id: ""
-                    },
-                    category: {
-                        name: ""
-                    }
-                }
+                create: this._getCreateModel()
             });
             this.getView().setModel(this.model);
 
             this.CreateListDialog = null;
-            this.CreateCategoryDialog = null;
+            this.MasterDataDialog = null;
         },
 
         _onRouteMatch() {
@@ -37,15 +29,8 @@ sap.ui.define([
             this._openCreateListDialog();
         },
 
-        onOpenCreateCategoryDialog() {
-            this._resetCreateCategoryData();
-            this._openCreateCategoryDialog();
-        },
-
-        onOpenDeleteConfirmationDialog(event) {
-            const path = event.getParameter("listItem").getBindingContext().getPath();
-            this.model.setProperty("/deleteId", this.model.getProperty(path + "/id"));
-            this._openDeleteConfirmationDialog();
+        onOpenMasterDataDialog() {
+            this._openMasterDataDialog();
         },
 
         onSubmitNewList(event) {
@@ -72,18 +57,12 @@ sap.ui.define([
             this.onDialogClose(event);
         },
 
-        /*-------------------PRIVATE SECTION-------------------*/
+        /*--------------------------------------PRIVATE SECTION--------------------------------------*/
         
         _resetCreateListData() {
             this.model.setProperty("/create/list", {
                 name: "",
                 category_id: this.getConfig().getProperty("/TodoListCategories")[0].id
-            });
-        },
-
-        _resetCreateCategoryData() {
-            this.model.setProperty("/create/category", {
-                category: "",
             });
         },
 
@@ -98,14 +77,26 @@ sap.ui.define([
             }
         },
 
-        _openCreateCategoryDialog() {
-            if (!this.CreateCategoryDialog) {
-                this.loadFragment({name: "yp.view.home.modals.CreateCategoryDialog"}).then(fragment => {
-                    this.CreateCategoryDialog = fragment;
-                    this.CreateCategoryDialog.open();
-                });
+        _openMasterDataDialog() {
+            if (!this.MasterDataDialog) {
+                this.loadFragment({name: "yp.view.home.modals.masterData.MasterDataDialog"}).then(fragment => {
+                    this.MasterDataDialog = fragment;
+                    this.MasterDataDialog.open();
+                })
             } else {
-                this.CreateCategoryDialog.open();
+                this.MasterDataDialog.open();
+            }
+        },
+
+        _getCreateModel() {
+            return {
+                list: {
+                    name: "",
+                    category_id: ""
+                },
+                category: {
+                    name: ""
+                }
             }
         }
     });

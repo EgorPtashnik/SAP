@@ -5,7 +5,7 @@
     displayBlock="true"
     controllerName="yp.controller.home.Home">
     
-    <DynamicPage showFooter="{/editMode}">
+    <DynamicPage>
         <title>
             <core:Fragment type="XML" fragmentName="yp.view.home.Title"/>
         </title>

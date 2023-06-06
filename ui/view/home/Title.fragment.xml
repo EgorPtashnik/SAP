@@ -8,7 +8,7 @@
         </heading>
         <actions>
             <m:Button text="Create List" press="onOpenCreateListDialog"/>
-            <m:Button text="Create Category" press="onOpenCreateCategoryDialog"/>
+            <m:Button text="Master Data Maintenance" press="onOpenMasterDataDialog"/>
         </actions>
     </DynamicPageTitle>
 </core:FragmentDefinition>

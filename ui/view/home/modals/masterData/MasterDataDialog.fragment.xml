@@ -1,0 +1,25 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m">
+    <Dialog resizable="true"
+            contentWidth="600px"
+            contentHeight="200px">
+        <customHeader>
+            <Toolbar>
+                <Title text="Master Data Maintenance"/>
+            </Toolbar>
+        </customHeader>
+        <content>
+            <IconTabHeader>
+                <items>
+                    <IconTabFilter key="category" text="List Category"/>
+                </items>
+            </IconTabHeader>
+            <core:Fragment type="XML" fragmentName="yp.view.home.modals.masterData.Category"/>
+        </content>
+        <buttons>
+            <Button text="Submit"/>
+            <Button text="Close" press="onDialogClose"/>
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>
