@@ -29,7 +29,6 @@ const MasterDataService = {
             VALUES
                 (?)
         `;
-        const now = new Date().toString();
         const params = [
             req.body.name,
         ];
@@ -49,6 +48,52 @@ const MasterDataService = {
             });
         });
     },
+
+    updateCategory: (req, res) => {
+        const sql = `
+        UPDATE TODOLISTCATEGORY SET
+            CATEGORY = ?
+        WHERE ID = ?
+        `;
+        const params = [
+            req.body.name,
+            req.params.id
+        ];
+        db.run(sql, params, function(err) {
+            if (err) {
+                res.status(400).json({
+                    error: err.message
+                });
+                return;
+            }
+            res.json({
+                message: "success",
+                category: {
+                    id: req.params.id,
+                    category: req.body.name
+                }
+            });
+        });
+    },
+
+    deleteCategory: (req, res) => {
+        const sql = `
+            DELETE FROM TODOLISTCATEGORY WHERE ID = ?
+        `;
+        const params = [req.params.id];
+        db.run(sql, params, err => {
+            if (err) {
+                res.status(400).json({
+                    error: err.message
+                });
+                return;
+            }
+            res.json({
+                message: "success",
+                id: req.params.id
+            });
+        });
+    }
 
 };
 

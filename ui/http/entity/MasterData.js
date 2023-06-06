@@ -8,18 +8,35 @@ sap.ui.define([
         ...Base,
         
         getTodoListCategories() {
-            return this._fetchJSON(BASE_URL + "/Categories");
+            return this._fetchJSON(BASE_URL + `/Categories`);
         },
 
         createTodoListCategory(newCategory) {
-            return this._fetchJSON(BASE_URL + "/Categories", {
+            return this._fetchJSON(BASE_URL + `/Categories`, {
                 body: JSON.stringify(newCategory),
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 }
             });
+        },
+
+        updateTodoListCategory(newCategory) {
+            return this._fetchJSON(BASE_URL + `/Categories/${newCategory.id}`, {
+                body: JSON.stringify(newCategory),
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+        },
+
+        deleteTodoListCategory(categoryId) {
+            return this._fetchJSON(BASE_URL + `/Categories/${categoryId}`, {
+                method: "DELETE"
+            });
         }
+
     }
 
 });

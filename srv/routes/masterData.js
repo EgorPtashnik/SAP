@@ -15,4 +15,12 @@ MasterDataRouter.post("/Categories", (req, res) => {
     MasterDataService.createCategory(req, res);
 });
 
+MasterDataRouter.put("/:id"), (req, res) => {
+    MasterDataService.updateCategory(req, res);
+};
+
+MasterDataRouter.delete("/:id", (req, res) => {
+    MasterDataService.deleteCategory(req, res);
+});
+
 module.exports = MasterDataRouter;

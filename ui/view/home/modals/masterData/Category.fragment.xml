@@ -12,7 +12,8 @@
     </Panel>
     <List items="{config>/TodoListCategories}"
           headerText="List Categories"
-          mode="Delete">
+          mode="Delete"
+          delete="onDeleteCategory">
         <items>
             <InputListItem label="{config>id}">
                 <Input value="{config>category}"/>

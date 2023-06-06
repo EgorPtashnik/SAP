@@ -23,17 +23,6 @@ sap.ui.define([
         },
 
         /*-------------------PRIVATE SECTION------------------*/
-        
-        _openDeleteConfirmationDialog() {
-            if (!this.DeleteConfirmationDialog) {
-                this.loadFragment({name: "yp.view.common.DeleteConfirmationDialog"}).then(fragment => {
-                    this.DeleteConfirmationDialog = fragment;
-                    this.DeleteConfirmationDialog.open()
-                })
-            } else {
-                this.DeleteConfirmationDialog.open();
-            }
-        },
 
         _toggleBusy() {
             this.getConfig().setProperty("/busy", !this.getConfig().getProperty("/busy"));

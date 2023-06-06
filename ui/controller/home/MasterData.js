@@ -14,6 +14,11 @@ sap.ui.define([
             });
         },
 
+        onDeleteCategory(event) {
+            const path = event.getParameter("listItem").getBindingContext("config").getPath();
+            const categoryId = this.getConfig().getProperty(path);
+        },
+
         /*--------------------------------PRIVATE SECTION---------------------------------*/
         _resetCreateMasterData() {
             this.model.setProperty("/create/masterData", {
