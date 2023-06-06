@@ -1,5 +1,5 @@
 const sqlTodoList = `
-    CREATE TABLE IF NOT EXISTS
+    CREATE TABLE
     TODOLIST (
         id
             INTEGER
@@ -24,7 +24,7 @@ const sqlTodoList = `
 `;
 
 const sqlTodoItem = `
-    CREATE TABLE IF NOT EXISTS
+    CREATE TABLE
     TODOITEM (
         id
             INTEGER
@@ -54,8 +54,13 @@ const sqlTodoItem = `
     )
 `;
 
-const createTodoListTable = db => { db.run(sqlTodoList, err => {/* Table already created */}); };
-const createTodoItemTable = db => { db.run(sqlTodoItem, err => {/* Table already created */}); };
+
+const createTodoListTable = db => { 
+    db.run(sqlTodoList, err => {/*Table already created */});
+};
+const createTodoItemTable = db => {
+    db.run(sqlTodoItem, err => {/* Table already created */});
+};
 
 module.exports = {
     createTodoListTable,

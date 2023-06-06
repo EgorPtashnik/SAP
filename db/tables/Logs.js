@@ -1,5 +1,5 @@
 const sqlErrorLog = `
-    CREATE TABLE IF NOT EXISTS
+    CREATE TABLE
     ERRORLOG (
         id
             INTEGER
