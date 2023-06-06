@@ -17,10 +17,6 @@
         <content>
             <core:Fragment type="XML" fragmentName="yp.view.home.Table"/>
         </content>
-
-        <footer>
-            <core:Fragment type="XML" fragmentName="yp.view.home.Footer"/>
-        </footer>
     </DynamicPage>
 
 </mvc:View>

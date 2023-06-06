@@ -1,9 +1,0 @@
-<core:FragmentDefinition
-    xmlns:core="sap.ui.core"
-    xmlns="sap.m">
-    <OverflowToolbar>
-        <ToolbarSpacer/>
-        <Button text="Save" type="Emphasized"/>
-        <Button text="Discard" press="onDiscard"/>
-    </OverflowToolbar>
-</core:FragmentDefinition>
