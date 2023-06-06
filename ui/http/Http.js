@@ -1,9 +1,11 @@
 sap.ui.define([
-    "yp/http/TodoList"
-], function(TodoList) {
+    "yp/http/TodoList",
+    "yp/http/MasterData"
+], function(TodoList, MasterData) {
     "use strict";
 
     return {
-        TodoList: TodoList
+        TodoList: TodoList,
+        MasterData: MasterData
     };
 });

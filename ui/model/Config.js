@@ -2,7 +2,8 @@ sap.ui.define([], function() {
     "use strict";
 
     return {
-        busy: false
+        busy: false,
+        TodoListCategories: []
     }
 
 });
