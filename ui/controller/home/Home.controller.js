@@ -1,26 +1,27 @@
 sap.ui.define([
     "yp/controller/BaseController",
     "sap/ui/model/json/JSONModel",
-    "sap/m/MessageBox"
-], function(BaseController, JSONModel, MessageBox) {
+
+    "yp/controller/home/MasterData"
+], function(BaseController, JSONModel, MasterDataLogic) {
 
     return BaseController.extend("yp.controller.home.Home", {
+        MasterData: MasterDataLogic,
+
         onInit() {
             this.getRouter().attachRouteMatched(this._onRouteMatch, this);
             this.model = new JSONModel({
                 lists: [],
-                editMode: false,
                 deleteId: "",
                 create: {
                     list: {
                         name: "",
                         category_id: ""
                     },
-                    categoey: {
+                    category: {
                         name: ""
                     }
-                },
-                backup: []
+                }
             });
             this.getView().setModel(this.model);
 
@@ -85,37 +86,7 @@ sap.ui.define([
             this.onDialogClose(event);
         },
 
-        onEdit() {
-            this._toggleEditMode();
-            if (this.model.getProperty("/editMode"))
-                this.model.setProperty("/backup", [...this.model.getProperty("/lists")]);
-        },
-
-        onSave() {
-
-        },
-
-        onDiscard() {
-            MessageBox.confirm("All changes will be lost. Do you want to exit edit mode?", {
-                title: "Confirm",
-                actions: [MessageBox.Action.OK, MessageBox.Action.CANCEL],
-                onClose: action => {
-                    if (action === MessageBox.Action.OK) {
-                        this._discardChanges();
-                        this._toggleEditMode();
-                    }
-                }
-            })
-        },
-
         /*-------------------PRIVATE SECTION-------------------*/
-        _discardChanges() {
-            this.model.setProperty("/lists", [...this.model.getProperty("/backup")]);
-        },
-
-        _toggleEditMode() {
-            this.model.setProperty("/editMode", !this.model.getProperty("/editMode"));
-        },
         
         _resetCreateListData() {
             this.model.setProperty("/create/list", {

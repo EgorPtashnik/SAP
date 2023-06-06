@@ -7,9 +7,8 @@
             <m:Title text="Todo List"/>
         </heading>
         <actions>
-            <m:Button text="Edit Mode" press="onEdit" visible="{=!${/editMode}}"/>
-            <m:Button text="Create List" press="onOpenCreateListDialog" visible="{/editMode}"/>
-            <m:Button text="Create Category" press="onOpenCreateCategoryDialog" visible="{/editMode}"/>
+            <m:Button text="Create List" press="onOpenCreateListDialog"/>
+            <m:Button text="Create Category" press="onOpenCreateCategoryDialog"/>
         </actions>
     </DynamicPageTitle>
 </core:FragmentDefinition>
