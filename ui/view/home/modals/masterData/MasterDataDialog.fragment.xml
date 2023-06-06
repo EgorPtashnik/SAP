@@ -3,7 +3,8 @@
     xmlns="sap.m">
     <Dialog resizable="true"
             contentWidth="600px"
-            contentHeight="600px">
+            contentHeight="600px"
+            busy="{config>/busyDialog}">
         <customHeader>
             <Toolbar>
                 <Title text="Master Data Maintenance"/>

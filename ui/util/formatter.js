@@ -37,6 +37,9 @@ sap.ui.define([], function() {
         },
         getCategoryText(value) {
             return this.getConfig().getProperty("/TodoListCategories").find(item => item.id === +value).category;
+        },
+        getDate(value) {
+            return new Date(value).toLocaleString();
         }
     }
 });

@@ -3,6 +3,7 @@ sap.ui.define([], function() {
 
     return {
         busy: false,
+        busyDialog: false,
         TodoListCategories: []
     }
 

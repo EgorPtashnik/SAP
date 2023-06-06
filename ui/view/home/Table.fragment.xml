@@ -12,6 +12,12 @@
                 <Text text="Category"/>
             </Column>
             <Column>
+                <Text text="Created At"/>
+            </Column>
+            <Column>
+                <Text text="Updated At"/>
+            </Column>
+            <Column>
                 <Text text="Status"/>
             </Column>
         </columns>
@@ -20,10 +26,12 @@
                 <cells>
                     <ObjectIdentifier title="{name}" text="Items: {ItemsCount}" visible="{=!${/editMode}}"/>
                     <Text text="{path: 'category_id', formatter: '.Formatter.getCategoryText'}" visible="{=!${/editMode}}"/>
+                    <Text text="{path: 'created_at', formatter: '.Formatter.getDate'}"/>
+                    <Text text="{path: 'updated_at', formatter: '.Formatter.getDate'}"/>      
                     <ObjectStatus inverted="true"
                                   text="{path: 'status', formatter: '.Formatter.getListStatusText'}"
                                   state="{path: 'status', formatter: '.Formatter.getListStatusType'}"
-                                  icon="{path: 'status', formatter: '.Formatter.getListStatusIcon'}"/>
+                                  icon="{path: 'status', formatter: '.Formatter.getListStatusIcon'}"/>                      
                 </cells>
             </ColumnListItem>
         </items>

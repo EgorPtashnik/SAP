@@ -26,6 +26,10 @@ sap.ui.define([
 
         _toggleBusy() {
             this.getConfig().setProperty("/busy", !this.getConfig().getProperty("/busy"));
+        },
+
+        _toggleBusyDialog() {
+            this.getConfig().setProperty("/busyDialog", !this.getConfig().getProperty("/busyDialog"));
         }
 
     });
