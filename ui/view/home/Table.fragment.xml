@@ -3,8 +3,7 @@
     xmlns="sap.m">
     <Table items="{/lists}"
            noDataText="No Todo Lists"
-           busy="{config>/busy}"
-           busyIndicatorDelay="1">
+           busy="{config>/busy}">
         <columns>
             <Column>
                 <Text text="Name"/>

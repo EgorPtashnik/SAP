@@ -3,7 +3,7 @@
     xmlns="sap.m">
     <Dialog resizable="true"
             contentWidth="600px"
-            contentHeight="200px">
+            contentHeight="600px">
         <customHeader>
             <Toolbar>
                 <Title text="Master Data Maintenance"/>
@@ -18,7 +18,6 @@
             <core:Fragment type="XML" fragmentName="yp.view.home.modals.masterData.Category"/>
         </content>
         <buttons>
-            <Button text="Submit"/>
             <Button text="Close" press="onDialogClose"/>
         </buttons>
     </Dialog>

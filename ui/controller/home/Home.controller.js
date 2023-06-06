@@ -6,7 +6,7 @@ sap.ui.define([
 ], function(BaseController, JSONModel, MasterDataLogic) {
 
     return BaseController.extend("yp.controller.home.Home", {
-        MasterData: MasterDataLogic,
+        ...MasterDataLogic,
 
         onInit() {
             this.getRouter().attachRouteMatched(this._onRouteMatch, this);
@@ -94,8 +94,10 @@ sap.ui.define([
                     name: "",
                     category_id: ""
                 },
-                category: {
-                    name: ""
+                masterData: {
+                    category: {
+                        name: ""
+                    }
                 }
             }
         }

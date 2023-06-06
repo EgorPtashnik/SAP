@@ -18,7 +18,7 @@ sap.ui.define([
 
             Http.MasterData.getTodoListCategories().then(res => {
                 if (!res.error && res.message === "success")
-                    this.getModel("config").setProperty("/TodoListCategories", res.data);
+                    this.getModel("config").setProperty("/TodoListCategories", [...res.data]);
             });
 
 
