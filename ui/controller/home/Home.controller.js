@@ -12,7 +12,6 @@ sap.ui.define([
             this.getRouter().attachRouteMatched(this._onRouteMatch, this);
             this.model = new JSONModel({
                 lists: [],
-                deleteId: "",
                 create: {
                     list: {
                         name: "",
@@ -27,7 +26,6 @@ sap.ui.define([
 
             this.CreateListDialog = null;
             this.CreateCategoryDialog = null;
-            this.DeleteConfirmationDialog = null;
         },
 
         _onRouteMatch() {
@@ -68,18 +66,6 @@ sap.ui.define([
             this.Http.MasterData.createTodoListCategory(newCategory).then(res => {
                 if (!res.error && res.message === "success") {
                     this.getConfig().setProperty("/TodoListCategories", [...this.getConfig().getProperty("/TodoListCategories"), res.newCategory]);
-                    this._toggleBusy();
-                }
-            });
-            this.onDialogClose(event);
-        },
-
-        onConfirmDeleteList(event) {
-            this._toggleBusy();
-            const deleteId = this.model.getProperty("/deleteId");
-            this.Http.TodoList.delete(deleteId).then(res => {
-                if (!res.error && res.message === "success") {
-                    this.model.setProperty("/lists", [...this.model.getProperty("/lists").filter(list => list.id !== deleteId)]);
                     this._toggleBusy();
                 }
             });
