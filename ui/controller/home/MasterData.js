@@ -16,7 +16,13 @@ sap.ui.define([
 
         onDeleteCategory(event) {
             const path = event.getParameter("listItem").getBindingContext("config").getPath();
-            const categoryId = this.getConfig().getProperty(path);
+            const categoryId = this.getConfig().getProperty(path).id;
+            this.Http.MasterData.deleteTodoListCategory(categoryId).then(res => {
+                if (!res.error && res.message === "success") {
+                    this.getConfig().setProperty("/TodoListCategories", this.getConfig().getProperty("/TodoListCategories").filter(item => item.id !== +res.id));
+                    console.log(this.getConfig().getData());
+                }
+            })
         },
 
         /*--------------------------------PRIVATE SECTION---------------------------------*/

@@ -45,18 +45,6 @@ sap.ui.define([
             this.onDialogClose(event);
         },
 
-        onSubmitNewCategory(event) {
-            this._toggleBusy();
-            const newCategory = this.model.getProperty("/create/masterData/category");
-            this.Http.MasterData.createTodoListCategory(newCategory).then(res => {
-                if (!res.error && res.message === "success") {
-                    this.getConfig().setProperty("/TodoListCategories", [...this.getConfig().getProperty("/TodoListCategories"), res.newCategory]);
-                    this._toggleBusy();
-                }
-            });
-            this.onDialogClose(event);
-        },
-
         /*--------------------------------------PRIVATE SECTION--------------------------------------*/
         
         _resetCreateListData() {
