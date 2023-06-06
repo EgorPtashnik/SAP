@@ -27,7 +27,6 @@ sap.ui.define([
         onOpenCreateDialog() {
             this._resetCreateData();
             this._openCreateDialog();
-            console.log(this.getConfig().getData());
         },
 
         onOpenDeleteConfirmationDialog(event) {
@@ -64,7 +63,7 @@ sap.ui.define([
         _resetCreateData() {
             this.getViewModel().setProperty("/create", {
                 name: "",
-                category_id: ""
+                category_id: this.getConfig().getProperty("/TodoListCategories")[0].id
             });
         },
 

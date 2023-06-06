@@ -4,7 +4,9 @@ const TodoListService = {
 
     getTodoLists: (req, res) => {
         const sql = `
-            SELECT LIST.*, COUNT(ITEM.ID) as ItemsCount
+            SELECT 
+                LIST.*,
+                COUNT(ITEM.ID) as ItemsCount
             FROM TODOLIST LIST
             LEFT JOIN TODOITEM ITEM 
                 ON ITEM.TODOLIST_ID = LIST.ID
@@ -60,7 +62,7 @@ const TodoListService = {
             0,
             now,
             now,
-            0
+            req.body.category_id
         ];
         db.run(sql, params, function(err) {
             if (err) {
@@ -77,7 +79,7 @@ const TodoListService = {
                     status: 0,
                     created_at: now,
                     updated_at: now,
-                    category_id: 0
+                    category_id: req.body.category_id
                 }
             });
         });

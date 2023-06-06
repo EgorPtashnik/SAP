@@ -17,6 +17,14 @@ sap.ui.define([], function() {
         4: sap.ui.core.MessageType.Error
     };
 
+    const STATUS_ICON_MAP = {
+        0: "",
+        1: "sap-icon://sys-enter-2",
+        2: "sap-icon://alert",
+        3: "sap-icon://message-warning",
+        4: "sap-icon://error"
+    };
+
     return {
         getListStatusText(value) {
             return STATUS_TEXT_MAP[value];
@@ -24,8 +32,11 @@ sap.ui.define([], function() {
         getListStatusType(value) {
             return STATUS_TYPE_MAP[value];
         },
+        getListStatusIcon(value) {
+            return STATUS_ICON_MAP[value];
+        },
         getCategoryText(value) {
-            return "No Category"
+            return this.getConfig().getProperty("/TodoListCategories").find(item => item.id === value).category;
         }
     }
 });

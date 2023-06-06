@@ -12,10 +12,10 @@
                 <Text text="Name"/>
             </Column>
             <Column>
-                <Text text="Status"/>
+                <Text text="Category"/>
             </Column>
             <Column>
-                <Text text="Category"/>
+                <Text text="Status"/>
             </Column>
         </columns>
         <items>
@@ -23,8 +23,10 @@
                 <cells>
                     <ObjectIdentifier title="{name}" text="Items: {ItemsCount}"/>
                     <Text text="{path: 'category_id', formatter: '.Formatter.getCategoryText'}"/>
-                    <MessageStrip text="{path: 'status', formatter: '.Formatter.getListStatusText'}"
-                                  type="{path: 'status', formatter: '.Formatter.getListStatusType'}"/>
+                    <ObjectStatus text="{path: 'status', formatter: '.Formatter.getListStatusText'}"
+                                  inverted="true"
+                                  state="{path: 'status', formatter: '.Formatter.getListStatusType'}"
+                                  icon="{path: 'status', formatter: '.Formatter.getListStatusIcon'}"/>
                 </cells>
             </ColumnListItem>
         </items>
