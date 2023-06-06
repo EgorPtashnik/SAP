@@ -20,7 +20,6 @@ sap.ui.define([
             this.Http.MasterData.deleteTodoListCategory(categoryId).then(res => {
                 if (!res.error && res.message === "success") {
                     this.getConfig().setProperty("/TodoListCategories", this.getConfig().getProperty("/TodoListCategories").filter(item => item.id !== +res.id));
-                    console.log(this.getConfig().getData());
                 }
             })
         },
