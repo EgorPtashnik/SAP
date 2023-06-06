@@ -50,13 +50,14 @@ const MasterDataService = {
     },
 
     updateCategory: (req, res) => {
+        console.log(req.body);
         const sql = `
         UPDATE TODOLISTCATEGORY SET
             CATEGORY = ?
         WHERE ID = ?
         `;
         const params = [
-            req.body.name,
+            req.body.category,
             req.params.id
         ];
         db.run(sql, params, function(err) {
@@ -70,7 +71,7 @@ const MasterDataService = {
                 message: "success",
                 category: {
                     id: req.params.id,
-                    category: req.body.name
+                    category: req.body.category
                 }
             });
         });

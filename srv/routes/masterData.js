@@ -15,9 +15,9 @@ MasterDataRouter.post("/Categories", (req, res) => {
     MasterDataService.createCategory(req, res);
 });
 
-MasterDataRouter.put("/Categories/:id"), (req, res) => {
+MasterDataRouter.put("/Categories/:id", (req, res) => {
     MasterDataService.updateCategory(req, res);
-};
+});
 
 MasterDataRouter.delete("/Categories/:id", (req, res) => {
     MasterDataService.deleteCategory(req, res);

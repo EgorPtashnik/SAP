@@ -16,7 +16,7 @@
           delete="onDeleteCategory">
         <items>
             <InputListItem label="{config>id}">
-                <Input value="{config>category}"/>
+                <Input value="{config>category}" change="onUpdateCategory"/>
             </InputListItem>
         </items>
     </List>
