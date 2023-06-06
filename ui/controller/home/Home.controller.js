@@ -11,7 +11,8 @@ sap.ui.define([
                 deleteMode: false,
                 deleteId: "",
                 create: {
-                    name: ""
+                    name: "",
+                    category_id: ""
                 }
             }));
 
@@ -26,6 +27,7 @@ sap.ui.define([
         onOpenCreateDialog() {
             this._resetCreateData();
             this._openCreateDialog();
+            console.log(this.getConfig().getData());
         },
 
         onOpenDeleteConfirmationDialog(event) {
@@ -61,7 +63,8 @@ sap.ui.define([
         /*-------------------PRIVATE SECTION-------------------*/
         _resetCreateData() {
             this.getViewModel().setProperty("/create", {
-                name: ""
+                name: "",
+                category_id: ""
             });
         },
 

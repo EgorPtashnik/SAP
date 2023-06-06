@@ -7,7 +7,7 @@
             <m:Title text="Todo List"/>
         </heading>
         <actions>
-            <m:ToggleButton pressed="{/deleteMode}" text="Delete Mode"/>
+            <m:ToggleButton enabled="{=${/lists}.length > 0}" pressed="{/deleteMode}" text="Delete Mode"/>
             <m:Button text="Create" press="onOpenCreateDialog"/>
             <m:Button text="Go" type="Emphasized"/>
         </actions>

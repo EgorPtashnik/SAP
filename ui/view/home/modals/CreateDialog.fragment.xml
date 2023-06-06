@@ -4,9 +4,13 @@
 	xmlns:f="sap.ui.layout.form">
     <Dialog title="Create List">
         <content>
-            <f:SimpleForm>
+            <f:SimpleForm editable="true">
                 <Label text="Name"/>
                 <Input value="{/create/name}"/>
+                <Label text="Category"/>
+                <Select items="{config>/TodoListCategories}" selectedKey="{/create/category_id}">
+                    <core:Item key="{config>id}" text="{config>category}"/>
+                </Select>
             </f:SimpleForm>
         </content>
         <buttons>
