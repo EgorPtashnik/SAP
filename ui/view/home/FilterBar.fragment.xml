@@ -1,14 +1,20 @@
 <core:FragmentDefinition
     xmlns:core="sap.ui.core"
     xmlns="sap.m"
-    xmlns:f="sap.f">
+    xmlns:f="sap.f"
+    xmlns:l="sap.ui.layout">
     <f:DynamicPageHeader>
         <Toolbar style="Clear">
-            <HBox>
+            <l:HorizontalLayout class="sapUiContentPadding">
                 <SearchField value="{/filters/name}" placeholder="search" liveChange="showOverlay" search="onFilter"/>
-            </HBox>
+                <MultiComboBox items="{config>/TodoListCategories}" selectedKeys="{/filters/category}" selectionChange="showOverlay">
+                    <core:Item key="{config>id}" text="{config>category}"/>
+                </MultiComboBox>
+            </l:HorizontalLayout>
             <ToolbarSpacer/>
-            <Button text="Go" type="Emphasized" press="onFilter"/>
+            <l:HorizontalLayout class="sapUiContentPadding">
+                <Button text="Go" type="Emphasized" press="onFilter"/>
+            </l:HorizontalLayout>
         </Toolbar>
     </f:DynamicPageHeader>
 </core:FragmentDefinition>

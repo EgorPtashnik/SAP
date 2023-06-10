@@ -15,7 +15,8 @@ sap.ui.define([
             this.model = new JSONModel({
                 lists: [],
                 filters: {
-                    name: ""
+                    name: "",
+                    category: []
                 },
                 create: this._getCreateModel()
             });
@@ -81,6 +82,11 @@ sap.ui.define([
             const filters = [];
             if (filterValues.name) {
                 filters.push(new Filter({path: "name", operator: FitlerOperator.Contains, value1: filterValues.name}));
+            }
+            if (filterValues.category.length > 0) {
+                filterValues.category.forEach(key => {
+                    filters.push(new Filter({path: "category_id", operator: FitlerOperator.EQ, value1: key}));
+                })
             }
             
             return filters;
