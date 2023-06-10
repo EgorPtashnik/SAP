@@ -5,10 +5,10 @@
     <f:DynamicPageHeader>
         <Toolbar style="Clear">
             <HBox>
-                <SearchField placeholder="search"/>
+                <SearchField value="{/filters/name}" placeholder="search" liveChange="showOverlay" search="onFilter"/>
             </HBox>
             <ToolbarSpacer/>
-            <Button text="Go" type="Emphasized"/>
+            <Button text="Go" type="Emphasized" press="onFilter"/>
         </Toolbar>
     </f:DynamicPageHeader>
 </core:FragmentDefinition>

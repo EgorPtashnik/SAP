@@ -1,9 +1,11 @@
 sap.ui.define([
     "yp/controller/BaseController",
     "sap/ui/model/json/JSONModel",
+	'sap/ui/model/Filter',
+	'sap/ui/model/FilterOperator',
 
     "yp/controller/home/MasterData"
-], function(BaseController, JSONModel, MasterDataLogic) {
+], function(BaseController, JSONModel, Filter, FitlerOperator, MasterDataLogic) {
 
     return BaseController.extend("yp.controller.home.Home", {
         ...MasterDataLogic,
@@ -12,6 +14,9 @@ sap.ui.define([
             this.getRouter().attachRouteMatched(this._onRouteMatch, this);
             this.model = new JSONModel({
                 lists: [],
+                filters: {
+                    name: ""
+                },
                 create: this._getCreateModel()
             });
             this.getView().setModel(this.model);
@@ -54,7 +59,32 @@ sap.ui.define([
             this.onDialogClose(event);
         },
 
+        showOverlay() {
+            const config = this.getConfig();
+            if (!config.getProperty("/tableSettings/showOverlay")) {
+                this.getConfig().setProperty("/tableSettings/showOverlay", true);
+            }
+        },
+
+        onFilter() {
+            this._toggleBusy();
+            const filters = this._getFilters();
+            this.byId("idListTable").getBinding("items").filter(filters);
+            this.getConfig().setProperty("/tableSettings/showOverlay", false);
+            this._toggleBusy();
+        },
+
         /*--------------------------------------PRIVATE SECTION--------------------------------------*/
+
+        _getFilters() {
+            const filterValues = this.model.getProperty("/filters");
+            const filters = [];
+            if (filterValues.name) {
+                filters.push(new Filter({path: "name", operator: FitlerOperator.Contains, value1: filterValues.name}));
+            }
+            
+            return filters;
+        },
         
         _resetCreateListData() {
             this.model.setProperty("/create/list", {

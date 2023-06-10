@@ -1,7 +1,9 @@
 <core:FragmentDefinition
     xmlns:core="sap.ui.core"
     xmlns="sap.m">
-    <Table items="{/lists}"
+    <Table id="idListTable"
+           fixedLayout="false"
+           items="{/lists}"
            noDataText="No Todo Lists"
            busy="{config>/busy}"
            showOverlay="{config>/tableSettings/showOverlay}">
