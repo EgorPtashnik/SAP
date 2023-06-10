@@ -33,6 +33,15 @@ sap.ui.define([
             this._openMasterDataDialog();
         },
 
+        onOpenTableSettingsDialog() {
+            this._openTableSettingsDialog();
+        },
+
+        onCloseTableSettingsDialog(event) {
+            localStorage.setItem("tableSettings", JSON.stringify(this.getConfig().getProperty("/tableSettings")));
+            this.onDialogClose(event);
+        },
+
         onSubmitNewList(event) {
             this._toggleBusy();
             const newList = this.model.getProperty("/create/list");
@@ -70,9 +79,20 @@ sap.ui.define([
                 this.loadFragment({name: "yp.view.home.modals.masterData.MasterDataDialog"}).then(fragment => {
                     this.MasterDataDialog = fragment;
                     this.MasterDataDialog.open();
-                })
+                });
             } else {
                 this.MasterDataDialog.open();
+            }
+        },
+
+        _openTableSettingsDialog() {
+            if (!this.TableSettingsDialog) {
+                this.loadFragment({name: "yp.view.home.modals.TableSettingsDialog"}).then(fragment => {
+                    this.TableSettingsDialog = fragment;
+                    this.TableSettingsDialog.open();
+                });
+            } else {
+                this.TableSettingsDialog.open();
             }
         },
 

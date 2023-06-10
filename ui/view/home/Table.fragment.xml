@@ -3,21 +3,28 @@
     xmlns="sap.m">
     <Table items="{/lists}"
            noDataText="No Todo Lists"
-           busy="{config>/busy}">
+           busy="{config>/busy}"
+           showOverlay="{config>/tableSettings/showOverlay}">
+        <headerToolbar>
+            <OverflowToolbar>
+                <ToolbarSpacer/>
+                <Button icon="sap-icon://action-settings" tooltip="Table settings" press="onOpenTableSettingsDialog"/>
+            </OverflowToolbar>
+        </headerToolbar>
         <columns>
-            <Column>
+            <Column visible="{config>/tableSettings/columns/name}">
                 <Text text="Name"/>
             </Column>
-            <Column>
+            <Column visible="{config>/tableSettings/columns/category}">
                 <Text text="Category"/>
             </Column>
-            <Column>
+            <Column visible="{config>/tableSettings/columns/created_at}">
                 <Text text="Created At"/>
             </Column>
-            <Column>
+            <Column visible="{config>/tableSettings/columns/updated_at}">
                 <Text text="Updated At"/>
             </Column>
-            <Column>
+            <Column visible="{config>/tableSettings/columns/status}">
                 <Text text="Status"/>
             </Column>
         </columns>

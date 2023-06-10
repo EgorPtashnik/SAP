@@ -1,0 +1,28 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form">
+    <Dialog busy="{config>/busyDialog}"
+        title="Table Settings" contentWidth="800px">
+        <content>
+            <f:SimpleForm editable="true">
+                <f:content>
+                    <core:Title text="Columns"/>
+                    <Label text="Name"/>
+                    <CheckBox selected="{config>/tableSettings/columns/name}"/>
+                    <Label text="Category"/>
+                    <CheckBox selected="{config>/tableSettings/columns/category}"/>
+                    <Label text="Status"/>
+                    <CheckBox selected="{config>/tableSettings/columns/status}"/>
+                    <Label text="Created At"/>
+                    <CheckBox selected="{config>/tableSettings/columns/created_at}"/>
+                    <Label text="Updated At"/>
+                    <CheckBox selected="{config>/tableSettings/columns/updated_at}"/>
+                </f:content>
+                </f:SimpleForm>
+            </content>
+        <buttons>
+            <Button text="Close" press="onCloseTableSettingsDialog"/>
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

@@ -4,7 +4,19 @@ sap.ui.define([], function() {
     return {
         busy: false,
         busyDialog: false,
-        TodoListCategories: []
+        TodoListCategories: [],
+        tableSettings: localStorage.getItem("tableSettings") 
+            ? JSON.parse(localStorage.getItem("tableSettings")) 
+            : {
+                showOverlay: false,
+                columns: {
+                    name: true,
+                    category: true,
+                    status: true,
+                    created_at: false,
+                    updated_at: false
+                }
+            }
     }
 
 });
