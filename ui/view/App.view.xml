@@ -1,9 +1,9 @@
 <mvc:View
     xmlns:mvc="sap.ui.core.mvc"
+    xmlns:f="sap.f"
     xmlns="sap.m"
     displayBlock="true"
     controllerName="yp.controller.App">
-    
     <App id="app"/>
 
 </mvc:View>
