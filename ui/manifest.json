@@ -21,10 +21,10 @@
         "async": true
       },
       "routes": [{
-        "pattern": "",
-        "name": "home",
+        "pattern": "todo",
+        "name": "todo",
         "viewType": "XML",
-        "view": "home.Home"
+        "view": "todo.Todo"
       }]
     }
   }

@@ -1,13 +1,29 @@
 <mvc:View
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns:f="sap.f"
-    xmlns="sap.m"
+    xmlns="sap.tnt"
+    xmlns:m="sap.m"
+    height="100%"
     displayBlock="true"
     controllerName="yp.controller.App">
-    <f:DynamicPage class="sapUiNoContentPadding">
-        <f:content>
-            <App id="app"/>
-        </f:content>
-    </f:DynamicPage>
+    <ToolPage>
+        <header>
+            <ToolHeader>
+                <m:ToolbarSpacer/>
+                <m:OverflowToolbarButton icon="sap-icon://settings"/>
+            </ToolHeader>
+        </header>
+        <subHeader>
+            <ToolHeader>
+                <m:IconTabHeader>
+                    <m:items>
+                        <m:IconTabFilter text="Todo"/>
+                    </m:items>
+                </m:IconTabHeader>
+            </ToolHeader>
+        </subHeader>
+        <mainContents>
+            <m:App id="app"/>
+        </mainContents>
+    </ToolPage>
 
 </mvc:View>

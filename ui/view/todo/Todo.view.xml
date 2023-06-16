@@ -1,0 +1,10 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    height="100%"
+    displayBlock="true"
+    controllerName="yp.controller.todo.Todo">
+    <Page>
+        <Text text="AAAAAAAAAAAAAAAAAAAAAA"/>
+    </Page>
+</mvc:View>
