@@ -4,6 +4,10 @@
     xmlns="sap.m"
     displayBlock="true"
     controllerName="yp.controller.App">
-    <App id="app"/>
+    <f:DynamicPage class="sapUiNoContentPadding">
+        <f:content>
+            <App id="app"/>
+        </f:content>
+    </f:DynamicPage>
 
 </mvc:View>
