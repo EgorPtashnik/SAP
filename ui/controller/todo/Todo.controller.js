@@ -1,9 +1,16 @@
 sap.ui.define([
-    "yp/controller/BaseController"
-], function(BaseController) {
+    "yp/controller/BaseController",
+
+    "sap/m/MessageBox",
+    "sap/m/MessageToast",
+
+    "yp/model/Todo"
+], function(BaseController, MessageBox, MessageToast, ViewModel) {
 
     return BaseController.extend("yp.controller.todo.Todo", {
         onInit() {
+            this.getView().setModel(ViewModel.getModel());
+
             this.oCreateCategoryDialog = null;
             
             this.getRouter().getRoute("todo").attachPatternMatched(this._onRouteMatched, this);
@@ -16,14 +23,30 @@ sap.ui.define([
         onOpenCreateCategoryDialog() {
             if (!this.oCreateCategoryDialog) {
                 this.loadFragment({name: "yp.view.todo.master.modal.CreateCategoryDialog"}).then(oFragment => {
-                    console.log(oFragment);
                     this.oCreateCategoryDialog = oFragment;
-                    console.log(this.oCreateCategoryDialog);
                     this.oCreateCategoryDialog.open();
                 });
             } else {
                 this.oCreateCategoryDialog.open();
             }
+        },
+
+        async onSubmitNewCategory() {
+            const oCategory = this.getModel().getProperty("/create");
+            const oCreateCategoryAction = this.oCreateCategoryDialog.getObjectBinding("todoService");
+            Object.entries(oCategory).forEach(entry => oCreateCategoryAction.setParameter(entry[0], entry[1]));
+            oCreateCategoryAction.execute()
+                .then(() => {
+                    MessageToast.show("Category was successfully created");
+                    this.oCreateCategoryDialog.close();
+                })
+                .catch(err => {
+                    console.log(JSON.stringify(err));
+                    MessageBox.error(err.error.message, {
+                        ixon: MessageBox.Icon.ERROR,
+                        title: `${err.status}: ${err.statusText}`
+                    });
+                });
         }
     });
 });

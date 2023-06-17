@@ -14,6 +14,19 @@
     }
   },
   "sap.ui5": {
+    "models": {
+      "todoService": {
+        "dataSource": "todoService",
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "preload": true,
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "groupId": "$auto"
+        }
+      }
+    },      
     "rootView": {
       "viewName": "yp.view.App",
       "type": "XML",
