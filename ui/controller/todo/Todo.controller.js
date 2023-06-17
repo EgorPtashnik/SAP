@@ -3,9 +3,10 @@ sap.ui.define([
 
     "sap/m/MessageBox",
     "sap/m/MessageToast",
+    "sap/ui/layout/SplitPane",
 
     "yp/model/Todo"
-], function(BaseController, MessageBox, MessageToast, ViewModel) {
+], function(BaseController, MessageBox, MessageToast, SplitPane, ViewModel) {
 
     return BaseController.extend("yp.controller.todo.Todo", {
         onInit() {
@@ -17,7 +18,36 @@ sap.ui.define([
         },
 
         _onRouteMatched(oEvent) {
-            this.setSelectedNavigationItem(oEvent);
+            try {
+                this.setSelectedNavigationItem(oEvent);
+                const sId = oEvent.getParameter("arguments").id;
+                if (sId) {
+                    this.getModel().setProperty("/busy/todoCategoryDetail", true);
+                    this.getView().bindElement({
+                        path: `todoService>/TodoCategory(${sId})`,
+                        parameters: {
+                            $expand: "Items"
+                        },
+                        events: {
+                            patchCompleted: () => {
+                                this.getView().byId("idTodoCategoryTable").getBinding("items").refresh();
+                            }
+                        }
+                    });
+                    const oPaneContainer = this.getView().byId("idPaneContainer");
+                    if (oPaneContainer.getPanes().length === 1) {
+                        this.loadFragment({name: "yp.view.todo.detail.Page"}).then(oFragment => {
+                            const oDetailPane = new SplitPane();
+                            oDetailPane.setContent(oFragment);
+                            oPaneContainer.addPane(oDetailPane);
+                        this.getModel().setProperty("/busy/todoCategoryDetail", false);
+                        });
+                    }
+                    this.getModel().setProperty("/busy/todoCategoryDetail", false);
+                }
+            } catch(e) {
+                throw new Error(e);
+            }
         },
 
         onOpenCreateCategoryDialog() {
@@ -45,11 +75,20 @@ sap.ui.define([
                 })
                 .catch(err => {
                     this.getModel().setProperty("/busy/todoCategoryList", false);
-                    MessageBox.error(err.error.message, {
-                        ixon: MessageBox.Icon.ERROR,
+                    MessageBox.alert(err.error.message, {
+                        icon: MessageBox.Icon.ERROR,
                         title: `${err.status}: ${err.statusText}`
                     });
                 });
+        },
+
+        onTodoCategoryPress(oEvent) {
+            const { ID } = oEvent.getParameter("listItem").getBindingContext("todoService").getObject();
+            this._navToDetail(ID);
+        },
+
+        _navToDetail(sId) {
+            this.getRouter().navTo("todo", { id: sId });
         }
     });
 });

@@ -1,17 +1,20 @@
 <core:FragmentDefinition
     xmlns:core="sap.ui.core"
     xmlns="sap.m">
-    <Table id="idTodoCategoryTable" 
-           items="{todoService>/TodoCategory}"
-           itemPress="onTodoCategoryPress">
+    <Table id="idTodoCategoryItemsTable" 
+           items="{todoService>Items}">
         <columns>
             <Column>
-                <Text text="Category"/>
+                <Text text="Name"/>
+            </Column>
+            <Column>
+                <Text text="Description"/>
             </Column>
         </columns>
         <items>
-            <ColumnListItem type="Navigation">
+            <ColumnListItem>
                 <Text text="{todoService>name}"/>
+                <Text text="{todoService>description}"/>
             </ColumnListItem>
         </items>
     </Table>

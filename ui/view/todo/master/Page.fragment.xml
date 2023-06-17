@@ -1,9 +1,15 @@
 <core:FragmentDefinition
     xmlns:core="sap.ui.core"
     xmlns="sap.m">
-    <Page showHeader="false"
-          busyIndicatorDelay="0"
+    <Page busyIndicatorDelay="0"
           busy="{/busy/todoCategoryList}">
+        <customHeader>
+            <Toolbar>
+                <Title text="Categories"/>
+                <ToolbarSpacer/>
+                <Button text="Add" press="onOpenCreateCategoryDialog"/>
+            </Toolbar>
+        </customHeader>
         <core:Fragment fragmentName="yp.view.todo.master.Table" type="XML"/>
     </Page>
 </core:FragmentDefinition>
