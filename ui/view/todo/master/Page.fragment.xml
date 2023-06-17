@@ -1,0 +1,7 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m">
+    <Page showHeader="false">
+        <core:Fragment fragmentName="yp.view.todo.master.Table" type="XML"/>
+    </Page>
+</core:FragmentDefinition>

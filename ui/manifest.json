@@ -2,7 +2,16 @@
   "_version": "1.0.0",
   "sap.app": {
     "id": "yp",
-    "type": "application"
+    "type": "application",
+    "dataSources": {
+      "todoService": {
+        "uri": "/api/todo/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      }
+    }
   },
   "sap.ui5": {
     "rootView": {
@@ -20,7 +29,14 @@
         "viewPath": "yp.view",
         "async": true
       },
-      "routes": [{
+      "routes": [
+        {
+          "pattern": "",
+          "name": "info",
+          "viewType": "XML",
+          "view": "Info"
+        },
+        {
         "pattern": "todo",
         "name": "todo",
         "viewType": "XML",

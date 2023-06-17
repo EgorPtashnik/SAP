@@ -1,0 +1,17 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form">
+    <Dialog title="Create New Category">
+        <f:SimpleForm>
+            <Label required="true" text="Category name"/>
+            <Input/>
+        </f:SimpleForm>
+        <buttons>
+            <Button text="Submit"
+                    type="Emphasized"/>
+            <Button text="Cancel" 
+                    press="onDialogClose"/>
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

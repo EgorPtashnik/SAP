@@ -1,6 +1,8 @@
 sap.ui.define([
-    "sap/ui/core/UIComponent"
-], function (UIComponent) {
+    "sap/ui/core/UIComponent",
+
+    "yp/model/Routes"
+], function (UIComponent, RoutesModel) {
     "use strict";
 
     return UIComponent.extend("yp.Component", {
@@ -10,6 +12,8 @@ sap.ui.define([
 
         init() {
             UIComponent.prototype.init.apply(this, arguments);
+
+            this.setModel(RoutesModel.getModel(), "routes");
 
             this.getRouter().initialize();
         },

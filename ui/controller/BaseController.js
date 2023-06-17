@@ -9,8 +9,17 @@ sap.ui.define([
             return UIComponent.getRouterFor(this);
         },
 
-        onDialogClose(event) {
-            event.getSource().getParent().close();
+        onDialogClose(oEvent) {
+            oEvent.getSource().getParent().close();
+        },
+
+        setSelectedNavigationItem(oEvent) {
+            const sRouteName = oEvent.getParameter("name");
+            this.getOwnerComponent().getModel("routes").setProperty("/selectedItem", sRouteName);
+        },
+
+        getModel(sModelName) {
+            return sModelName ? this.getView().getModel(sModelName) : this.getView().getModel();
         }
     });
 });

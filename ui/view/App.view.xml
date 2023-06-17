@@ -1,29 +1,36 @@
 <mvc:View
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.tnt"
-    xmlns:m="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns="sap.m"
     height="100%"
     displayBlock="true"
     controllerName="yp.controller.App">
-    <ToolPage>
-        <header>
-            <ToolHeader>
-                <m:ToolbarSpacer/>
-                <m:OverflowToolbarButton icon="sap-icon://settings"/>
-            </ToolHeader>
-        </header>
-        <subHeader>
-            <ToolHeader>
-                <m:IconTabHeader>
-                    <m:items>
-                        <m:IconTabFilter text="Todo"/>
-                    </m:items>
-                </m:IconTabHeader>
-            </ToolHeader>
-        </subHeader>
-        <mainContents>
-            <m:App id="app"/>
-        </mainContents>
-    </ToolPage>
+    <tnt:ToolPage sideExpanded="{/sideNavExpanded}">
+        <tnt:header>
+            <tnt:ToolHeader>
+                <Button tooltip="Show/Hide" icon="sap-icon://menu2" type="Transparent" press="toggleSideNavigation(${/sideNavExpanded})">
+                    <layoutData>
+                        <OverflowToolbarLayoutData priority="NeverOverflow"/>
+                    </layoutData>
+                </Button>
+                <ToolbarSpacer/>
+                <OverflowToolbarButton icon="sap-icon://settings"/>
+            </tnt:ToolHeader>
+        </tnt:header>
+        <tnt:sideContent>
+            <tnt:SideNavigation>
+                <tnt:NavigationList items="{routes>/items}"
+                                    selectedKey="{routes>/selectedItem}">
+                    <tnt:NavigationListItem key="{routes>route}"
+                                            text="{routes>text}"
+                                            icon="{routes>icon}"
+                                            select="onSelectNavigationItem(${routes>route})"/>
+                </tnt:NavigationList>
+            </tnt:SideNavigation>
+        </tnt:sideContent>
+        <tnt:mainContents>
+            <App id="app"/>
+        </tnt:mainContents>
+    </tnt:ToolPage>
 
 </mvc:View>
