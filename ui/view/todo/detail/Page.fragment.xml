@@ -1,6 +1,13 @@
 <core:FragmentDefinition
     xmlns:core="sap.ui.core"
-    xmlns="sap.m">
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form">
     <Page showHeader="false">
+        <f:SimpleForm editable="true">
+            <core:Title text="Header"/>
+            <Label text="Name"/>
+            <Input value=""/>
+            <core:Title text=""/>
+        </f:SimpleForm>
     </Page>
 </core:FragmentDefinition>

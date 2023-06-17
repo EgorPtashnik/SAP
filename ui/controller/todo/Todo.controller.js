@@ -32,16 +32,19 @@ sap.ui.define([
         },
 
         async onSubmitNewCategory() {
+            this.getModel().setProperty("/busy/todoCategoryList", true);
             const oCategory = this.getModel().getProperty("/create");
             const oCreateCategoryAction = this.oCreateCategoryDialog.getObjectBinding("todoService");
             Object.entries(oCategory).forEach(entry => oCreateCategoryAction.setParameter(entry[0], entry[1]));
             oCreateCategoryAction.execute()
                 .then(() => {
                     MessageToast.show("Category was successfully created");
+                    this.getView().byId("idTodoCategoryTable").getBinding("items").refresh();
                     this.oCreateCategoryDialog.close();
+                    this.getModel().setProperty("/busy/todoCategoryList", false);
                 })
                 .catch(err => {
-                    console.log(JSON.stringify(err));
+                    this.getModel().setProperty("/busy/todoCategoryList", false);
                     MessageBox.error(err.error.message, {
                         ixon: MessageBox.Icon.ERROR,
                         title: `${err.status}: ${err.statusText}`

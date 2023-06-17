@@ -6,6 +6,10 @@ sap.ui.define([
     return {
         getModel() {
             return new JSONModel({
+                busy: {
+                    todoCategoryList: false,
+                    todoCategoryDetail: false
+                },
                 create: {
                     name: ""
                 }

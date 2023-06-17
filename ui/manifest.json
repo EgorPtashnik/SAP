@@ -50,7 +50,7 @@
           "view": "Info"
         },
         {
-        "pattern": "todo",
+        "pattern": "todo/:id:",
         "name": "todo",
         "viewType": "XML",
         "view": "todo.Todo"

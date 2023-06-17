@@ -1,7 +1,7 @@
 <core:FragmentDefinition
     xmlns:core="sap.ui.core"
     xmlns="sap.m">
-    <Table items="{todoService>/TodoCategory}">
+    <Table id="idTodoCategoryTable" items="{todoService>/TodoCategory}">
         <headerToolbar>
             <Toolbar>
                 <ToolbarSpacer/>
